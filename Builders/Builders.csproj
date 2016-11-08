@@ -51,7 +51,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Domain\Org.cs" />
-    <Compile Include="Builders\OrgBuilder.cs" />
     <Compile Include="Domain\OrgStruct.cs" />
     <Compile Include="Builders\OrgStructBuilder.cs" />
     <Compile Include="OrgStructBuildingTests.cs" />
