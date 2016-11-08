@@ -2,13 +2,13 @@
 {
     public class Org
     {
-        public Org(string name, Org parent = null)
+        public Org(string shortName, Org parent = null)
         {
             Parent = parent;
-            Name = name;
+            ShortName = shortName;
         }
 
-        public string Name { get; }
+        public string ShortName { get; }
         public Org Parent { get; }
     }
 }

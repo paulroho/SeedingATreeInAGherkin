@@ -15,9 +15,9 @@ namespace Builders.Builders
             _org = org;
         }
 
-        public void HasChild(string name, params Action<OrgBuilder>[] builderActions)
+        public void HasChild(string shortName, params Action<OrgBuilder>[] builderActions)
         {
-            var childOrg = new Org(name, _org);
+            var childOrg = new Org(shortName, _org);
             _orgStruct.Add(childOrg);
             var builder = new OrgBuilder(_orgStruct, childOrg);
             ExecuteActions(builder, builderActions);

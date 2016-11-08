@@ -25,12 +25,12 @@ namespace Builders
             var orgSwPmo = oestruct["SWPmo"];
             var orgSwEng = oestruct["SWEng"];
 
-            Assert.AreEqual("Board", orgBrd.Name);
-            Assert.AreEqual("HOFin", orgHOFin.Name);
-            Assert.AreEqual("HOTech", orgHOTech.Name);
-            Assert.AreEqual("SWDevSvc", orgSds.Name);
-            Assert.AreEqual("SWPmo", orgSwPmo.Name);
-            Assert.AreEqual("SWEng", orgSwEng.Name);
+            Assert.AreEqual("Board", orgBrd.ShortName);
+            Assert.AreEqual("HOFin", orgHOFin.ShortName);
+            Assert.AreEqual("HOTech", orgHOTech.ShortName);
+            Assert.AreEqual("SWDevSvc", orgSds.ShortName);
+            Assert.AreEqual("SWPmo", orgSwPmo.ShortName);
+            Assert.AreEqual("SWEng", orgSwEng.ShortName);
 
             Assert.IsNull(orgBrd.Parent);
             Assert.AreSame(orgBrd, orgHOFin.Parent);

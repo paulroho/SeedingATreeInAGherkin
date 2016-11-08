@@ -7,10 +7,10 @@ namespace Builders.Builders
     {
         private readonly OrgStruct _orgStruct = new OrgStruct();
 
-        public OrgStruct OrgStruct(string name, params Action<OrgBuilder>[] builderActions)
+        public OrgStruct OrgStruct(string shortName, params Action<OrgBuilder>[] builderActions)
         {
             var builder = new OrgBuilder(_orgStruct);
-            builder.HasChild(name, builderActions);
+            builder.HasChild(shortName, builderActions);
             return _orgStruct;
         }
     }

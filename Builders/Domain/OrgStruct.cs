@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Builders.Domain
@@ -9,7 +9,7 @@ namespace Builders.Domain
 
         public void Add(Org org)
         {
-            _orgs.Add(org.Name, org);
+            _orgs.Add(org.ShortName, org);
         }
 
         public Org this[string name]
