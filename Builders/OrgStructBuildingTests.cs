@@ -1,8 +1,8 @@
-﻿using Builders.Builders;
-using Builders.Domain;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SeedingATree.Builders;
+using SeedingATree.Domain;
 
-namespace Builders
+namespace SeedingATree
 {
     [TestClass]
     public class OrgStructBuildingTests

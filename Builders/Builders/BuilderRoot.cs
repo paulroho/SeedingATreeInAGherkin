@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Builders.Builders
+namespace SeedingATree.Builders
 {
     public class BuilderRoot
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Builders.Domain
+namespace SeedingATree.Domain
 {
     public class OrgStruct
     {

@@ -1,6 +1,6 @@
-﻿using Builders.Domain;
+using SeedingATree.Domain;
 
-namespace Builders.Builders
+namespace SeedingATree.Builders
 {
     public class OrgBuilder
     {

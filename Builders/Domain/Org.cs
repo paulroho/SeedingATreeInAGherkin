@@ -1,4 +1,4 @@
-﻿namespace Builders.Domain
+namespace SeedingATree.Domain
 {
     public class Org
     {

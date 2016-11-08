@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using Builders.Domain;
+using SeedingATree.Domain;
 
-namespace Builders.Builders
+namespace SeedingATree.Builders
 {
     public class OrgStructBuilder
     {
