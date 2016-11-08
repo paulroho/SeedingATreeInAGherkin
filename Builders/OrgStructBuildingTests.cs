@@ -43,6 +43,42 @@ namespace Builders
         }
 
         [TestMethod]
+        public void BuildTheOrgViaOrgBuilder()
+        {
+            var an = BuilderRoot.A;
+
+            var orgBrd = an.OrgBuilder("Board").Build();
+            var orgHOFin = an.OrgBuilder("HOFin")
+                .AsChildOf(orgBrd).Build();
+            var orgHOTech = an.OrgBuilder("HOTech")
+                .AsChildOf(orgBrd).Build();
+            var orgItInfra = an.OrgBuilder("ITInfra")
+                .AsChildOf(orgHOTech).Build();
+            var orgSds = an.OrgBuilder("SWDevSvc")
+                .AsChildOf(orgHOTech).Build();
+            var orgSwPmo = an.OrgBuilder("SWPmo")
+                .AsChildOf(orgSds).Build();
+            var orgSwEng = an.OrgBuilder("SWEng")
+                .AsChildOf(orgSds).Build();
+
+            Assert.AreEqual("Board", orgBrd.ShortName);
+            Assert.AreEqual("HOFin", orgHOFin.ShortName);
+            Assert.AreEqual("HOTech", orgHOTech.ShortName);
+            Assert.AreEqual("ITInfra", orgItInfra.ShortName);
+            Assert.AreEqual("SWDevSvc", orgSds.ShortName);
+            Assert.AreEqual("SWPmo", orgSwPmo.ShortName);
+            Assert.AreEqual("SWEng", orgSwEng.ShortName);
+
+            Assert.IsNull(orgBrd.Parent);
+            Assert.AreSame(orgBrd, orgHOFin.Parent);
+            Assert.AreSame(orgBrd, orgHOTech.Parent);
+            Assert.AreSame(orgHOTech, orgItInfra.Parent);
+            Assert.AreSame(orgHOTech, orgSds.Parent);
+            Assert.AreSame(orgSds, orgSwPmo.Parent);
+            Assert.AreSame(orgSds, orgSwEng.Parent);
+        }
+
+        [TestMethod]
         public void TestTheOrgStructBuilder()
         {
             var an = new OrgStructBuilder();

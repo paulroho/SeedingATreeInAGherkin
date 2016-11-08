@@ -50,9 +50,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Builders\BuilderRoot.cs" />
     <Compile Include="Domain\Org.cs" />
     <Compile Include="Domain\OrgStruct.cs" />
     <Compile Include="Builders\OrgStructBuilder.cs" />
+    <Compile Include="Builders\OrgBuilder.cs" />
     <Compile Include="OrgStructBuildingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

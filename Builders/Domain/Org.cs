@@ -14,7 +14,7 @@
         public string ShortName { get; }
         public string Name { get; }
         public OrgType Type { get; }
-        public Org Parent { get; }
+        public Org Parent { get; set; }
     }
 
     public enum OrgType
