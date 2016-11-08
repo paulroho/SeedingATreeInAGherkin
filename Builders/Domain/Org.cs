@@ -2,13 +2,25 @@
 {
     public class Org
     {
-        public Org(string shortName, Org parent = null)
+        public Org(string shortName, string name, OrgType type, Org parent = null)
         {
-            Parent = parent;
             ShortName = shortName;
+            Name = name;
+            Type = type;
+            Parent = parent;
         }
 
+
         public string ShortName { get; }
+        public string Name { get; }
+        public OrgType Type { get; }
         public Org Parent { get; }
+    }
+
+    public enum OrgType
+    {
+        Executive,
+        Department,
+        Normal,
     }
 }
