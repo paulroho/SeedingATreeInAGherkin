@@ -54,6 +54,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="An org structure can be expressed in gherkin.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>An org structure can be expressed in gherkin.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Bindings\StepBindings.cs" />
     <Compile Include="Builders\BuilderRoot.cs" />
     <Compile Include="Domain\Org.cs" />
     <Compile Include="Domain\OrgStruct.cs" />
@@ -64,6 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="An org structure can be expressed in gherkin.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>An org structure can be expressed in gherkin.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>
