@@ -40,7 +40,7 @@ namespace SeedingATree.Bindings
         public void GivenIHaveTheFollowingIntendedOrgStructureAsText(string asciiArt)
         {
             _orgRowsMultiline = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
-                .Select(l => new OrgRowIndended {OrgAtLevel = l.Trim()});
+                .Select(l => new OrgRowIndended {OrgAtLevel = l.TrimEnd()});
         }
 
         [When(@"I execute the specs")]
@@ -153,7 +153,7 @@ namespace SeedingATree.Bindings
     {
         public string OrgAtLevel { get; set; }
 
-        public string Name => Regex.Replace(OrgAtLevel, @"(. )*(.*)", "$2");
+        public string Name => Regex.Replace(OrgAtLevel, @"([. ] )*(.*)", "$2");
 
         public int Level => (OrgAtLevel.Length - Name.Length)/2 + 1;
     }
