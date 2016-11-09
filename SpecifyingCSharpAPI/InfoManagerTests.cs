@@ -37,5 +37,20 @@ namespace SpecifyingCSharpAPI
             Assert.AreEqual("ITInfra", children[0].ShortName);
             Assert.AreEqual("SWDevSvc", children[1].ShortName);
         }
+
+        [TestMethod]
+        public void GetAllChildren_AlsoReturnsTheGrandChildren()
+        {
+            var infoManager = new InfoManager(_context);
+
+            // Act
+            var children = infoManager.GetAllChildren("HOTech");
+
+            Assert.AreEqual(4, children.Count);
+            Assert.AreEqual("ITInfra", children[0].ShortName);
+            Assert.AreEqual("SWDevSvc", children[1].ShortName);
+            Assert.AreEqual("SWPmo", children[2].ShortName);
+            Assert.AreEqual("SWEng", children[3].ShortName);
+        }
     }
 }
