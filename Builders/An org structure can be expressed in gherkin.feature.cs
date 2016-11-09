@@ -68,11 +68,11 @@ namespace SeedingATree
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed a org tree using a table with a row for each org and parent relation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a table with a row for each org and parent relation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "An org structure can be expressed in gherkin")]
-        public virtual void SeedAOrgTreeUsingATableWithARowForEachOrgAndParentRelation()
+        public virtual void SeedAnOrgTreeUsingATableWithARowForEachOrgAndParentRelation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed a org tree using a table with a row for each org and parent relation", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a table with a row for each org and parent relation", ((string[])(null)));
 #line 3
 this.ScenarioSetup(scenarioInfo);
 #line hidden
@@ -105,6 +105,65 @@ this.ScenarioSetup(scenarioInfo);
 #line 14
  testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 17
+ testRunner.Then("I get the correct organizations.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a table with a row for each org and column skipping")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "An org structure can be expressed in gherkin")]
+        public virtual void SeedAnOrgTreeUsingATableWithARowForEachOrgAndColumnSkipping()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a table with a row for each org and column skipping", ((string[])(null)));
+#line 20
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Level1",
+                        "Level2",
+                        "Level3",
+                        "Level4"});
+            table2.AddRow(new string[] {
+                        "Board",
+                        "",
+                        "",
+                        ""});
+            table2.AddRow(new string[] {
+                        "",
+                        "HOFin",
+                        "",
+                        ""});
+            table2.AddRow(new string[] {
+                        "",
+                        "HOTech",
+                        "",
+                        ""});
+            table2.AddRow(new string[] {
+                        "",
+                        "",
+                        "ITInfra",
+                        ""});
+            table2.AddRow(new string[] {
+                        "",
+                        "",
+                        "SWDevSvc",
+                        ""});
+            table2.AddRow(new string[] {
+                        "",
+                        "",
+                        "",
+                        "SWPmo"});
+            table2.AddRow(new string[] {
+                        "",
+                        "",
+                        "",
+                        "SWEng"});
+#line 21
+ testRunner.Given("I have the following levelled org structure", ((string)(null)), table2, "Given ");
+#line 31
+ testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
  testRunner.Then("I get the correct organizations.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
