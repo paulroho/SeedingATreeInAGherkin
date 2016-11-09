@@ -2,13 +2,13 @@
 using System.Linq;
 using SeedingATree.Domain;
 
-namespace SpecifyingCSharpAPI.Component
+namespace SpecifyingCSharpAPI.OrgComponent.Implementation
 {
-    public class InfoManager
+    public class InfoManager : IInfoManager
     {
-        private OrgContext context;
+        private readonly IOrgContext context;
 
-        public InfoManager(OrgContext context)
+        public InfoManager(IOrgContext context)
         {
             this.context = context;
         }

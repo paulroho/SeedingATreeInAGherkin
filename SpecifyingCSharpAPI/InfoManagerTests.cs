@@ -1,34 +1,33 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeedingATree.Builders;
-using SpecifyingCSharpAPI.Component;
+using SpecifyingCSharpAPI.OrgComponent;
 
 namespace SpecifyingCSharpAPI
 {
     [TestClass]
     public class InfoManagerTests
     {
-        private OrgContext _context;
+        private IOrgContext _context;
 
         [TestInitialize]
         public void TestInitialize()
         {
             var an = new OrgStructBuilder();
-            _context = new OrgContext
-            {
-                OrgStructure = an.OrgStruct("Board",
+            _context = Facade.CreateOrgContext(
+                an.OrgStruct("Board",
                     brd => brd.HasChild("HOFin"),
                     brd => brd.HasChild("HOTech",
                         tech => tech.HasChild("ITInfra"),
                         tech => tech.HasChild("SWDevSvc",
                             sds => sds.HasChild("SWPmo"),
                             sds => sds.HasChild("SWEng"))))
-            };
+            );
         }
 
         [TestMethod]
         public void GetDirectChildren_GetsJustTheDirectChildren()
         {
-            var infoManager = new InfoManager(_context);
+            var infoManager = Facade.GetInfoManager(_context);
 
             // Act
             var children = infoManager.GetDirectChildren("HOTech");
@@ -41,7 +40,7 @@ namespace SpecifyingCSharpAPI
         [TestMethod]
         public void GetAllChildren_AlsoReturnsTheGrandChildren()
         {
-            var infoManager = new InfoManager(_context);
+            var infoManager = Facade.GetInfoManager(_context);
 
             // Act
             var children = infoManager.GetAllChildren("HOTech");

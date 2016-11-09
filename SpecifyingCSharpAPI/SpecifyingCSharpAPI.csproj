@@ -50,9 +50,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Component\InfoManager.cs" />
+    <Compile Include="OrgComponent\Facade.cs" />
+    <Compile Include="OrgComponent\IInfoManager.cs" />
+    <Compile Include="OrgComponent\Implementation\InfoManager.cs" />
+    <Compile Include="OrgComponent\IOrgContext.cs" />
     <Compile Include="InfoManagerTests.cs" />
-    <Compile Include="Component\OrgContext.cs" />
+    <Compile Include="OrgComponent\Implementation\OrgContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +64,7 @@
       <Name>SeedingATree</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
