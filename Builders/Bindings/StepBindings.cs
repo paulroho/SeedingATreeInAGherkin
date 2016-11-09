@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeedingATree.Domain;
 using TechTalk.SpecFlow;
@@ -12,6 +14,7 @@ namespace SeedingATree.Bindings
         private IEnumerable<OrgRow> _orgRows;
         private Dictionary<string, Org> _orgs;
         private IEnumerable<OrgRowColSkipped> _orgRowsColSkip;
+        private IEnumerable<OrgRowIndended> _orgRowsIndended;
 
         [Given(@"I have the following organizations")]
         public void GivenIHaveTheFollowingOrganizations(Table table)
@@ -25,6 +28,12 @@ namespace SeedingATree.Bindings
             _orgRowsColSkip = table.CreateSet<OrgRowColSkipped>();
         }
 
+        [Given(@"I have the following intended org structure")]
+        public void GivenIHaveTheFollowingIntendedOrgStructure(Table table)
+        {
+            _orgRowsIndended = table.CreateSet<OrgRowIndended>();
+        }
+
         [When(@"I execute the specs")]
         public void WhenIExecuteTheSpecs()
         {
@@ -36,6 +45,10 @@ namespace SeedingATree.Bindings
             if (_orgRowsColSkip != null)
             {
                 _orgs = GetOrgsFromOrgRowsColSkipped(_orgRowsColSkip);
+            }
+            if (_orgRowsIndended != null)
+            {
+                _orgs = GetOrgsFromOrgRowsIndended(_orgRowsIndended);
             }
         }
 
@@ -55,6 +68,26 @@ namespace SeedingATree.Bindings
         }
 
         private Dictionary<string, Org> GetOrgsFromOrgRowsColSkipped(IEnumerable<OrgRowColSkipped> rows)
+        {
+            var orgs = new Dictionary<string, Org>();
+            var levels = new Dictionary<int, Org>();
+            foreach (var row in rows)
+            {
+                var name = row.Name;
+                var org = new Org(name, name, OrgType.Normal);
+                var level = row.Level;
+                if (level > 1)
+                {
+                    org.Parent = levels[level - 1];
+                }
+                orgs.Add(org.ShortName, org);
+
+                levels[level] = org;
+            }
+            return orgs;
+        }
+
+        private Dictionary<string, Org> GetOrgsFromOrgRowsIndended(IEnumerable<OrgRowIndended> rows)
         {
             var orgs = new Dictionary<string, Org>();
             var levels = new Dictionary<int, Org>();
@@ -101,6 +134,15 @@ namespace SeedingATree.Bindings
             Assert.AreSame(orgSds, orgSwPmo.Parent);
             Assert.AreSame(orgSds, orgSwEng.Parent);
         }
+    }
+
+    public class OrgRowIndended
+    {
+        public string OrgAtLevel { get; set; }
+
+        public string Name => Regex.Replace(OrgAtLevel, @"(. )*(.*)", "$2");
+
+        public int Level => (OrgAtLevel.Length - Name.Length)/2 + 1;
     }
 
     public class OrgRowColSkipped

@@ -168,6 +168,41 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a table with a row for each org and intentation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "An org structure can be expressed in gherkin")]
+        public virtual void SeedAnOrgTreeUsingATableWithARowForEachOrgAndIntentation()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a table with a row for each org and intentation", ((string[])(null)));
+#line 37
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Org at level"});
+            table3.AddRow(new string[] {
+                        "Board"});
+            table3.AddRow(new string[] {
+                        ". HOFin"});
+            table3.AddRow(new string[] {
+                        ". HOTech"});
+            table3.AddRow(new string[] {
+                        ". . ITInfra"});
+            table3.AddRow(new string[] {
+                        ". . SWDevSvc"});
+            table3.AddRow(new string[] {
+                        ". . . SWPmo"});
+            table3.AddRow(new string[] {
+                        ". . . SWEng"});
+#line 38
+ testRunner.Given("I have the following intended org structure", ((string)(null)), table3, "Given ");
+#line 48
+ testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 51
+ testRunner.Then("I get the correct organizations.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
