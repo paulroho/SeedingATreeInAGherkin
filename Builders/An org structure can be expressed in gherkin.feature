@@ -85,3 +85,21 @@ Scenario: Seed an org tree using a multiline text with a row for each org and in
 
 	# This is just an aweful hack to get this spec to work quickly.
 	Then I get the correct organizations.
+
+
+Scenario: Seed an org tree using a multiline text with a row for each org and indentation with arrows
+	Given I have the following intended org structure as text indenting by '-> '
+		"""
+		Board       
+		-> HOFin     
+		-> HOTech    
+		   -> ITInfra 
+		   -> SWDevSvc
+		      -> SWPmo 
+		      -> SWEng 
+		"""
+
+	When I execute the specs
+
+	# This is just an aweful hack to get this spec to work quickly.
+	Then I get the correct organizations.

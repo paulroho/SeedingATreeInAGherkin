@@ -43,6 +43,25 @@ namespace SeedingATree.Bindings
                 .Select(l => new OrgRowIndented {OrgAtLevel = l.TrimEnd()});
         }
 
+        [Given(@"I have the following intended org structure as text indenting by '(.*)'")]
+        public void GivenIHaveTheFollowingIntendedOrgStructureAsTextIndentingBy(string indentationString, string asciiArt)
+        {
+            var indentStepLength = indentationString.Length;
+            var whitespaces = new string(' ', indentStepLength);
+            var searchPattern = $@"(({whitespaces})*({Regex.Escape(indentationString)}))(.*)";
+            var replacePattern = "$4";
+
+            _orgRowsMultiline = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
+                .Select(
+                    l => new OrgRowIndented
+                    {
+                        OrgAtLevel = l.TrimEnd(),
+                        SearchPattern = searchPattern,
+                        IndentStepLength = indentStepLength,
+                        ReplacePattern = replacePattern,
+                    });
+        }
+
         [When(@"I execute the specs")]
         public void WhenIExecuteTheSpecs()
         {
@@ -153,9 +172,12 @@ namespace SeedingATree.Bindings
     {
         public string OrgAtLevel { get; set; }
 
-        public string Name => Regex.Replace(OrgAtLevel, @"([. ] )*(.*)", "$2");
+        public string SearchPattern { get; set; } = @"([. ] )*(.*)";
+        public int IndentStepLength { get; set; } = 2;
+        public string ReplacePattern { get; set; } = "$2";
 
-        public int Level => (OrgAtLevel.Length - Name.Length)/2 + 1;
+        public string Name => Regex.Replace(OrgAtLevel, SearchPattern, ReplacePattern);
+        public int Level => (OrgAtLevel.Length - Name.Length)/IndentStepLength + 1;
     }
 
     public class OrgRowColSkipped

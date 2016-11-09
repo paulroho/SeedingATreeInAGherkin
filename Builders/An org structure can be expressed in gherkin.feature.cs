@@ -245,6 +245,28 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a multiline text with a row for each org and indentation w" +
+            "ith arrows")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "An org structure can be expressed in gherkin")]
+        public virtual void SeedAnOrgTreeUsingAMultilineTextWithARowForEachOrgAndIndentationWithArrows()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a multiline text with a row for each org and indentation w" +
+                    "ith arrows", ((string[])(null)));
+#line 90
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+#line 91
+ testRunner.Given("I have the following intended org structure as text indenting by \'-> \'", "Board       \r\n-> HOFin     \r\n-> HOTech    \r\n   -> ITInfra \r\n   -> SWDevSvc\r\n     " +
+                    " -> SWPmo \r\n      -> SWEng ", ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 102
+ testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 105
+ testRunner.Then("I get the correct organizations.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
