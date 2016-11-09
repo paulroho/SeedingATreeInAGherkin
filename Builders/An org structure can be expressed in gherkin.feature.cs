@@ -170,11 +170,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a table with a row for each org and indendation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a table with a row for each org and indentation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "An org structure can be expressed in gherkin")]
-        public virtual void SeedAnOrgTreeUsingATableWithARowForEachOrgAndIndendation()
+        public virtual void SeedAnOrgTreeUsingATableWithARowForEachOrgAndIndentation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a table with a row for each org and indendation", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a table with a row for each org and indentation", ((string[])(null)));
 #line 37
 this.ScenarioSetup(scenarioInfo);
 #line hidden
@@ -205,12 +205,12 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a multiline text with a row for each org and indendation w" +
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a multiline text with a row for each org and indentation w" +
             "ith dots")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "An org structure can be expressed in gherkin")]
-        public virtual void SeedAnOrgTreeUsingAMultilineTextWithARowForEachOrgAndIndendationWithDots()
+        public virtual void SeedAnOrgTreeUsingAMultilineTextWithARowForEachOrgAndIndentationWithDots()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a multiline text with a row for each org and indendation w" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a multiline text with a row for each org and indentation w" +
                     "ith dots", ((string[])(null)));
 #line 54
 this.ScenarioSetup(scenarioInfo);
@@ -227,11 +227,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a multiline text with a row for each org and indendation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Seed an org tree using a multiline text with a row for each org and indentation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "An org structure can be expressed in gherkin")]
-        public virtual void SeedAnOrgTreeUsingAMultilineTextWithARowForEachOrgAndIndendation()
+        public virtual void SeedAnOrgTreeUsingAMultilineTextWithARowForEachOrgAndIndentation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a multiline text with a row for each org and indendation", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a multiline text with a row for each org and indentation", ((string[])(null)));
 #line 72
 this.ScenarioSetup(scenarioInfo);
 #line hidden

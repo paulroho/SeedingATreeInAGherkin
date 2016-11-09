@@ -15,8 +15,8 @@ namespace SeedingATree.Bindings
         private IEnumerable<OrgRow> _orgRows;
         private Dictionary<string, Org> _orgs;
         private IEnumerable<OrgRowColSkipped> _orgRowsColSkip;
-        private IEnumerable<OrgRowIndended> _orgRowsIndended;
-        private IEnumerable<OrgRowIndended> _orgRowsMultiline;
+        private IEnumerable<OrgRowIndented> _orgRowsIndented;
+        private IEnumerable<OrgRowIndented> _orgRowsMultiline;
 
         [Given(@"I have the following organizations")]
         public void GivenIHaveTheFollowingOrganizations(Table table)
@@ -33,14 +33,14 @@ namespace SeedingATree.Bindings
         [Given(@"I have the following intended org structure")]
         public void GivenIHaveTheFollowingIntendedOrgStructure(Table table)
         {
-            _orgRowsIndended = table.CreateSet<OrgRowIndended>();
+            _orgRowsIndented = table.CreateSet<OrgRowIndented>();
         }
 
         [Given(@"I have the following intended org structure as text")]
         public void GivenIHaveTheFollowingIntendedOrgStructureAsText(string asciiArt)
         {
             _orgRowsMultiline = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
-                .Select(l => new OrgRowIndended {OrgAtLevel = l.TrimEnd()});
+                .Select(l => new OrgRowIndented {OrgAtLevel = l.TrimEnd()});
         }
 
         [When(@"I execute the specs")]
@@ -55,13 +55,13 @@ namespace SeedingATree.Bindings
             {
                 _orgs = GetOrgsFromOrgRowsColSkipped(_orgRowsColSkip);
             }
-            if (_orgRowsIndended != null)
+            if (_orgRowsIndented != null)
             {
-                _orgs = GetOrgsFromOrgRowsIndended(_orgRowsIndended);
+                _orgs = GetOrgsFromOrgRowsIndented(_orgRowsIndented);
             }
             if (_orgRowsMultiline != null)
             {
-                _orgs = GetOrgsFromOrgRowsIndended(_orgRowsMultiline);
+                _orgs = GetOrgsFromOrgRowsIndented(_orgRowsMultiline);
             }
         }
 
@@ -100,7 +100,7 @@ namespace SeedingATree.Bindings
             return orgs;
         }
 
-        private Dictionary<string, Org> GetOrgsFromOrgRowsIndended(IEnumerable<OrgRowIndended> rows)
+        private Dictionary<string, Org> GetOrgsFromOrgRowsIndented(IEnumerable<OrgRowIndented> rows)
         {
             var orgs = new Dictionary<string, Org>();
             var levels = new Dictionary<int, Org>();
@@ -149,7 +149,7 @@ namespace SeedingATree.Bindings
         }
     }
 
-    public class OrgRowIndended
+    public class OrgRowIndented
     {
         public string OrgAtLevel { get; set; }
 
