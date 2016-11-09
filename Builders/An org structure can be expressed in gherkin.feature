@@ -34,7 +34,7 @@ Scenario: Seed an org tree using a table with a row for each org and column skip
 	Then I get the correct organizations.
 
 
-Scenario: Seed an org tree using a table with a row for each org and intentation
+Scenario: Seed an org tree using a table with a row for each org and indendation
 	Given I have the following intended org structure
 		| Org at level |
 		| Board        |
@@ -44,6 +44,24 @@ Scenario: Seed an org tree using a table with a row for each org and intentation
 		| . . SWDevSvc |
 		| . . . SWPmo  |
 		| . . . SWEng  |
+
+	When I execute the specs
+
+	# This is just an aweful hack to get this spec to work quickly.
+	Then I get the correct organizations.
+
+
+Scenario: Seed an org tree using a multiline text with a row for each org and indendation
+	Given I have the following intended org structure as text
+		"""
+		Board       
+		. HOFin     
+		. HOTech    
+		. . ITInfra 
+		. . SWDevSvc
+		. . . SWPmo 
+		. . . SWEng 
+		"""
 
 	When I execute the specs
 

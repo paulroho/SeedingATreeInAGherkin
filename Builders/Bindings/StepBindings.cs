@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeedingATree.Domain;
@@ -15,6 +16,7 @@ namespace SeedingATree.Bindings
         private Dictionary<string, Org> _orgs;
         private IEnumerable<OrgRowColSkipped> _orgRowsColSkip;
         private IEnumerable<OrgRowIndended> _orgRowsIndended;
+        private IEnumerable<OrgRowIndended> _orgRowsMultiline;
 
         [Given(@"I have the following organizations")]
         public void GivenIHaveTheFollowingOrganizations(Table table)
@@ -34,6 +36,13 @@ namespace SeedingATree.Bindings
             _orgRowsIndended = table.CreateSet<OrgRowIndended>();
         }
 
+        [Given(@"I have the following intended org structure as text")]
+        public void GivenIHaveTheFollowingIntendedOrgStructureAsText(string asciiArt)
+        {
+            _orgRowsMultiline = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
+                .Select(l => new OrgRowIndended {OrgAtLevel = l.Trim()});
+        }
+
         [When(@"I execute the specs")]
         public void WhenIExecuteTheSpecs()
         {
@@ -49,6 +58,10 @@ namespace SeedingATree.Bindings
             if (_orgRowsIndended != null)
             {
                 _orgs = GetOrgsFromOrgRowsIndended(_orgRowsIndended);
+            }
+            if (_orgRowsMultiline != null)
+            {
+                _orgs = GetOrgsFromOrgRowsIndended(_orgRowsMultiline);
             }
         }
 
