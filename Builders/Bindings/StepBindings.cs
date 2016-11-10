@@ -132,7 +132,7 @@ namespace SeedingATree.Bindings
         [Then(@"I get the correct organizations\.")]
         public void ThenIGetTheCorrectOrganizations_()
         {
-            var orgs = _context.OrgStruct.Orgs;
+            var orgs = _context.OrgStruct;
             var orgBrd = orgs["Board"];
             var orgHOFin = orgs["HOFin"];
             var orgHOTech = orgs["HOTech"];

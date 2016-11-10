@@ -10,7 +10,7 @@ namespace SeedingATree.Domain
             Orgs = new Dictionary<string, Org>();
         }
 
-        public Dictionary<string, Org> Orgs { get; }
+        private Dictionary<string, Org> Orgs { get; }
 
         public void Add(Org org)
         {
