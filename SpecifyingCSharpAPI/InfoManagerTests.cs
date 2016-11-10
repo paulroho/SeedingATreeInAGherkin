@@ -25,7 +25,7 @@ namespace SpecifyingCSharpAPI
         }
 
         [TestMethod]
-        public void GetDirectChildren_GivenAnOrg_GetsJustTheDirectChildren()
+        public void GetDirectChildren_GivenAnOrgUnit_GetsJustTheDirectChildren()
         {
             var infoManager = Facade.GetInfoManager(_context);
             var orgHOTech = _context.OrgStructure["HOTech"];
@@ -39,7 +39,7 @@ namespace SpecifyingCSharpAPI
         }
 
         [TestMethod]
-        public void GetDirectChildren_GivenAnOrgShortName_GetsJustTheDirectChildren()
+        public void GetDirectChildren_GivenAnOrgUnitShortName_GetsJustTheDirectChildren()
         {
             var infoManager = Facade.GetInfoManager(_context);
 
@@ -52,7 +52,7 @@ namespace SpecifyingCSharpAPI
         }
 
         [TestMethod]
-        public void GetAllChildren_GivenAnOrg_AlsoReturnsTheGrandChildren()
+        public void GetAllChildren_GivenAnOrgUnit_AlsoReturnsTheGrandChildren()
         {
             var infoManager = Facade.GetInfoManager(_context);
             var orgHOTech = _context.OrgStructure["HOTech"];
@@ -68,7 +68,7 @@ namespace SpecifyingCSharpAPI
         }
 
         [TestMethod]
-        public void GetAllChildren_GivenAnOrgShortName_AlsoReturnsTheGrandChildren()
+        public void GetAllChildren_GivenAnOrgUnitShortName_AlsoReturnsTheGrandChildren()
         {
             var infoManager = Facade.GetInfoManager(_context);
 
