@@ -8,25 +8,25 @@ namespace SeedingATree.Builders
     {
         private readonly OrgStruct _orgStruct = new OrgStruct();
 
-        public OrgStruct OrgStruct(string shortName, params Action<OrgBuilder>[] builderActions)
+        public OrgStruct OrgStruct(string shortName, params Action<OrgUnitBuilder>[] builderActions)
         {
-            var builder = new OrgBuilder(_orgStruct);
+            var builder = new OrgUnitBuilder(_orgStruct);
             builder.HasChild(shortName, builderActions);
             return _orgStruct;
         }
 
-        public class OrgBuilder
+        public class OrgUnitBuilder
         {
             private readonly OrgStruct _orgStruct;
             private readonly OrgUnit _orgUnit;
 
-            public OrgBuilder(OrgStruct orgStruct, OrgUnit orgUnit = null)
+            public OrgUnitBuilder(OrgStruct orgStruct, OrgUnit orgUnit = null)
             {
                 _orgStruct = orgStruct;
                 _orgUnit = orgUnit;
             }
 
-            public void HasChild(string shortName, params Action<OrgBuilder>[] builderActions)
+            public void HasChild(string shortName, params Action<OrgUnitBuilder>[] builderActions)
             {
                 var childOrgUnit = new OrgUnit(
                     shortName: shortName,
@@ -34,11 +34,11 @@ namespace SeedingATree.Builders
                     type: OrgUnitType.Normal,
                     parent: _orgUnit);
                 _orgStruct.Add(childOrgUnit);
-                var builder = new OrgBuilder(_orgStruct, childOrgUnit);
+                var builder = new OrgUnitBuilder(_orgStruct, childOrgUnit);
                 ExecuteActions(builder, builderActions);
             }
 
-            private void ExecuteActions(OrgBuilder builder, IEnumerable<Action<OrgBuilder>> builderActions)
+            private void ExecuteActions(OrgUnitBuilder builder, IEnumerable<Action<OrgUnitBuilder>> builderActions)
             {
                 foreach (var buildAction in builderActions)
                 {
