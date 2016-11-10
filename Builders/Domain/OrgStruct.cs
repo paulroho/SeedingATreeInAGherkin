@@ -5,26 +5,26 @@ namespace SeedingATree.Domain
 {
     public class OrgStruct
     {
+        private readonly Dictionary<string, OrgUnit> _orgUnits;
+
         public OrgStruct()
         {
-            Orgs = new Dictionary<string, Org>();
+            _orgUnits = new Dictionary<string, OrgUnit>();
         }
 
-        private Dictionary<string, Org> Orgs { get; }
-
-        public void Add(Org org)
+        public void Add(OrgUnit orgUnit)
         {
-            Orgs.Add(org.ShortName, org);
+            _orgUnits.Add(orgUnit.ShortName, orgUnit);
         }
 
-        public Org this[string name]
+        public OrgUnit this[string name]
         {
             get
             {
-                Org org;
-                if (!Orgs.TryGetValue(name, out org))
-                    throw new ArgumentOutOfRangeException(nameof(name), name, $"There is no Org namend \"{name}\".");
-                return Orgs[name];
+                OrgUnit orgUnit;
+                if (!_orgUnits.TryGetValue(name, out orgUnit))
+                    throw new ArgumentOutOfRangeException(nameof(name), name, $"There is no OrgUnit namend \"{name}\".");
+                return _orgUnits[name];
             }
         }
     }

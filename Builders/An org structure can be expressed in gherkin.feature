@@ -1,7 +1,7 @@
 ﻿Feature: An org structure can be expressed in gherkin
 
-Scenario: Seed an org tree using a table with a row for each org and parent relation
-	Given I have the following organizations
+Scenario: Seed an org tree using a table with a row for each org unit and parent relation
+	Given I have the following org units
 		| Name     | Parent   |
 		| Board    |          |
 		| HOFin    | Board    |
@@ -14,10 +14,10 @@ Scenario: Seed an org tree using a table with a row for each org and parent rela
 	When I execute the specs
 
 	# This is just an aweful hack to get this spec to work quickly.
-	Then I get the correct organizations.
+	Then I get the correct org units.
 
 
-Scenario: Seed an org tree using a table with a row for each org and column skipping
+Scenario: Seed an org tree using a table with a row for each org unit and column skipping
 	Given I have the following levelled org structure
 		| Level1 | Level2 | Level3   | Level4 |
 		| Board  |        |          |        |
@@ -31,27 +31,27 @@ Scenario: Seed an org tree using a table with a row for each org and column skip
 	When I execute the specs
 
 	# This is just an aweful hack to get this spec to work quickly.
-	Then I get the correct organizations.
+	Then I get the correct org units.
 
 
-Scenario: Seed an org tree using a table with a row for each org and indentation
+Scenario: Seed an org tree using a table with a row for each org unit and indentation
 	Given I have the following intended org structure
-		| Org at level |
-		| Board        |
-		| . HOFin      |
-		| . HOTech     |
-		| . . ITInfra  |
-		| . . SWDevSvc |
-		| . . . SWPmo  |
-		| . . . SWEng  |
+		| Org unit at level |
+		| Board             |
+		| . HOFin           |
+		| . HOTech          |
+		| . . ITInfra       |
+		| . . SWDevSvc      |
+		| . . . SWPmo       |
+		| . . . SWEng       |
 
 	When I execute the specs
 
 	# This is just an aweful hack to get this spec to work quickly.
-	Then I get the correct organizations.
+	Then I get the correct org units.
 
 
-Scenario: Seed an org tree using a multiline text with a row for each org and indentation with dots
+Scenario: Seed an org tree using a multiline text with a row for each org unit and indentation with dots
 	Given I have the following intended org structure as text
 		"""
 		Board       
@@ -66,10 +66,10 @@ Scenario: Seed an org tree using a multiline text with a row for each org and in
 	When I execute the specs
 
 	# This is just an aweful hack to get this spec to work quickly.
-	Then I get the correct organizations.
+	Then I get the correct org units.
 
 
-Scenario: Seed an org tree using a multiline text with a row for each org and indentation
+Scenario: Seed an org tree using a multiline text with a row for each org unit and indentation
 	Given I have the following intended org structure as text
 		"""
 		Board       
@@ -84,10 +84,10 @@ Scenario: Seed an org tree using a multiline text with a row for each org and in
 	When I execute the specs
 
 	# This is just an aweful hack to get this spec to work quickly.
-	Then I get the correct organizations.
+	Then I get the correct org units.
 
 
-Scenario: Seed an org tree using a multiline text with a row for each org and indentation with arrows
+Scenario: Seed an org tree using a multiline text with a row for each org unit and indentation with arrows
 	Given I have the following intended org structure as text indenting by '-> '
 		"""
 		Board       
@@ -102,4 +102,4 @@ Scenario: Seed an org tree using a multiline text with a row for each org and in
 	When I execute the specs
 
 	# This is just an aweful hack to get this spec to work quickly.
-	Then I get the correct organizations.
+	Then I get the correct org units.

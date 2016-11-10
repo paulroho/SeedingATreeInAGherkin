@@ -1,8 +1,8 @@
 namespace SeedingATree.Domain
 {
-    public class Org
+    public class OrgUnit
     {
-        public Org(string shortName, string name, OrgType type, Org parent = null)
+        public OrgUnit(string shortName, string name, OrgUnitType type, OrgUnit parent = null)
         {
             ShortName = shortName;
             Name = name;
@@ -13,11 +13,11 @@ namespace SeedingATree.Domain
 
         public string ShortName { get; }
         public string Name { get; }
-        public OrgType Type { get; }
-        public Org Parent { get; set; }
+        public OrgUnitType Type { get; }
+        public OrgUnit Parent { get; set; }
     }
 
-    public enum OrgType
+    public enum OrgUnitType
     {
         Executive,
         Department,
