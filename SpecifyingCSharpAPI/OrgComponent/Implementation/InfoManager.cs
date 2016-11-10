@@ -6,30 +6,39 @@ namespace SpecifyingCSharpAPI.OrgComponent.Implementation
 {
     public class InfoManager : IInfoManager
     {
-        private readonly IOrgContext context;
+        private readonly IOrgContext _context;
+        private readonly OrgStruct _orgStructure;
 
         public InfoManager(IOrgContext context)
         {
-            this.context = context;
+            _context = context;
+            _orgStructure = context.OrgStructure;
+        }
+
+        public IList<Org> GetDirectChildren(Org org)
+        {
+            return _orgStructure.Orgs.Where(o => o.Parent == org).ToList();
         }
 
         public IList<Org> GetDirectChildren(string orgShortName)
         {
-            var orgStructure = context.OrgStructure;
-            var org = orgStructure[orgShortName];
-            return orgStructure.Orgs.Where(o => o.Parent == org).ToList();
+            return GetDirectChildren(_orgStructure[orgShortName]);
         }
 
-        public IList<Org> GetAllChildren(string orgShortName)
+        public IList<Org> GetAllChildren(Org org)
         {
-            var orgStructure = context.OrgStructure;
-            var org = orgStructure[orgShortName];
-            var orgs = orgStructure.Orgs.Where(o => o.Parent == org).ToList();
+            var orgs = _orgStructure.Orgs.Where(o => o.Parent == org).ToList();
             foreach (var o in orgs.ToList())
             {
                 orgs.AddRange(GetAllChildren(o.ShortName));
             }
             return orgs;
+        }
+
+        public IList<Org> GetAllChildren(string orgShortName)
+        {
+            var org = _orgStructure[orgShortName];
+            return GetAllChildren(org);
         }
     }
 }

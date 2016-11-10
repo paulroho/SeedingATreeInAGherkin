@@ -25,7 +25,21 @@ namespace SpecifyingCSharpAPI
         }
 
         [TestMethod]
-        public void GetDirectChildren_GetsJustTheDirectChildren()
+        public void GetDirectChildren_GivenAnOrg_GetsJustTheDirectChildren()
+        {
+            var infoManager = Facade.GetInfoManager(_context);
+            var orgHOTech = _context.OrgStructure["HOTech"];
+
+            // Act
+            var children = infoManager.GetDirectChildren(orgHOTech);
+
+            Assert.AreEqual(2, children.Count);
+            Assert.AreEqual("ITInfra", children[0].ShortName);
+            Assert.AreEqual("SWDevSvc", children[1].ShortName);
+        }
+
+        [TestMethod]
+        public void GetDirectChildren_GivenAnOrgShortName_GetsJustTheDirectChildren()
         {
             var infoManager = Facade.GetInfoManager(_context);
 
@@ -38,7 +52,23 @@ namespace SpecifyingCSharpAPI
         }
 
         [TestMethod]
-        public void GetAllChildren_AlsoReturnsTheGrandChildren()
+        public void GetAllChildren_GivenAnOrg_AlsoReturnsTheGrandChildren()
+        {
+            var infoManager = Facade.GetInfoManager(_context);
+            var orgHOTech = _context.OrgStructure["HOTech"];
+
+            // Act
+            var children = infoManager.GetAllChildren(orgHOTech);
+
+            Assert.AreEqual(4, children.Count);
+            Assert.AreEqual("ITInfra", children[0].ShortName);
+            Assert.AreEqual("SWDevSvc", children[1].ShortName);
+            Assert.AreEqual("SWPmo", children[2].ShortName);
+            Assert.AreEqual("SWEng", children[3].ShortName);
+        }
+
+        [TestMethod]
+        public void GetAllChildren_GivenAnOrgShortName_AlsoReturnsTheGrandChildren()
         {
             var infoManager = Facade.GetInfoManager(_context);
 
