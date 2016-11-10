@@ -105,6 +105,97 @@ this.FeatureBackground();
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Querying the direct children of an org unit using the method InfoManager.GetDirec" +
+            "tChildren(string orgUnitShortName)")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Querying the Org structure using the APIs provided by the InfoManager")]
+        public virtual void QueryingTheDirectChildrenOfAnOrgUnitUsingTheMethodInfoManager_GetDirectChildrenStringOrgUnitShortName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Querying the direct children of an org unit using the method InfoManager.GetDirec" +
+                    "tChildren(string orgUnitShortName)", ((string[])(null)));
+#line 28
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line 30
+ testRunner.When("I call GetDirectChildren(\"HOTech\")", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Org Unit"});
+            table2.AddRow(new string[] {
+                        "ITInfra"});
+            table2.AddRow(new string[] {
+                        "SWDevSvc"});
+#line 32
+ testRunner.Then("I get the org units", ((string)(null)), table2, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Querying all children of an org unit using the method InfoManager.GetAllChildren(" +
+            "OrgUnit orgUnit)")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Querying the Org structure using the APIs provided by the InfoManager")]
+        public virtual void QueryingAllChildrenOfAnOrgUnitUsingTheMethodInfoManager_GetAllChildrenOrgUnitOrgUnit()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Querying all children of an org unit using the method InfoManager.GetAllChildren(" +
+                    "OrgUnit orgUnit)", ((string[])(null)));
+#line 38
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line 40
+ testRunner.Given("for each org unit I have an OrgUnit object named orgUnit.Shortname", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 42
+ testRunner.When("I call GetAllChildren(HOTech)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Org Unit"});
+            table3.AddRow(new string[] {
+                        "ITInfra"});
+            table3.AddRow(new string[] {
+                        "SWDevSvc"});
+            table3.AddRow(new string[] {
+                        "SWPmo"});
+            table3.AddRow(new string[] {
+                        "SWEng"});
+#line 44
+ testRunner.Then("I get the org units", ((string)(null)), table3, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Querying all the children of an org unit using the method InfoManager.GetAllChild" +
+            "ren(string orgUnitShortName)")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Querying the Org structure using the APIs provided by the InfoManager")]
+        public virtual void QueryingAllTheChildrenOfAnOrgUnitUsingTheMethodInfoManager_GetAllChildrenStringOrgUnitShortName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Querying all the children of an org unit using the method InfoManager.GetAllChild" +
+                    "ren(string orgUnitShortName)", ((string[])(null)));
+#line 51
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line 53
+ testRunner.When("I call GetAllChildren(\"HOTech\")", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Org Unit"});
+            table4.AddRow(new string[] {
+                        "ITInfra"});
+            table4.AddRow(new string[] {
+                        "SWDevSvc"});
+            table4.AddRow(new string[] {
+                        "SWPmo"});
+            table4.AddRow(new string[] {
+                        "SWEng"});
+#line 55
+ testRunner.Then("I get the org units", ((string)(null)), table4, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
