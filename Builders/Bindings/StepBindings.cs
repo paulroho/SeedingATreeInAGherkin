@@ -12,35 +12,35 @@ namespace SeedingATree.Bindings
     [Binding]
     public class StepBindings
     {
-        private IEnumerable<OrgRow> _orgRows;
         private Dictionary<string, Org> _orgs;
-        private IEnumerable<OrgRowColSkipped> _orgRowsColSkip;
-        private IEnumerable<OrgRowIndented> _orgRowsIndented;
-        private IEnumerable<OrgRowIndented> _orgRowsMultiline;
 
         [Given(@"I have the following organizations")]
         public void GivenIHaveTheFollowingOrganizations(Table table)
         {
-            _orgRows = table.CreateSet<OrgRow>();
+            var orgRows = table.CreateSet<OrgRow>();
+            _orgs = GetOrgsFromOrgRows(orgRows);
         }
 
         [Given(@"I have the following levelled org structure")]
         public void GivenIHaveTheFollowingLevelledOrgStructure(Table table)
         {
-            _orgRowsColSkip = table.CreateSet<OrgRowColSkipped>();
+            var orgRows = table.CreateSet<OrgRowColSkipped>();
+            _orgs = GetOrgsFromOrgRowsColSkipped(orgRows);
         }
 
         [Given(@"I have the following intended org structure")]
         public void GivenIHaveTheFollowingIntendedOrgStructure(Table table)
         {
-            _orgRowsIndented = table.CreateSet<OrgRowIndented>();
+            var orgRows = table.CreateSet<OrgRowIndented>();
+            _orgs = GetOrgsFromOrgRowsIndented(orgRows);
         }
 
         [Given(@"I have the following intended org structure as text")]
         public void GivenIHaveTheFollowingIntendedOrgStructureAsText(string asciiArt)
         {
-            _orgRowsMultiline = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
+            var orgRows = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
                 .Select(l => new OrgRowIndented {OrgAtLevel = l.TrimEnd()});
+            _orgs = GetOrgsFromOrgRowsIndented(orgRows);
         }
 
         [Given(@"I have the following intended org structure as text indenting by '(.*)'")]
@@ -51,7 +51,7 @@ namespace SeedingATree.Bindings
             var searchPattern = $@"(({whitespaces})*({Regex.Escape(indentationString)}))(.*)";
             var replacePattern = "$4";
 
-            _orgRowsMultiline = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
+            var orgRows = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
                 .Select(
                     l => new OrgRowIndented
                     {
@@ -60,28 +60,13 @@ namespace SeedingATree.Bindings
                         IndentStepLength = indentStepLength,
                         ReplacePattern = replacePattern,
                     });
+            _orgs = GetOrgsFromOrgRowsIndented(orgRows);
         }
 
         [When(@"I execute the specs")]
         public void WhenIExecuteTheSpecs()
         {
-            // HACK
-            if (_orgRows != null)
-            {
-                _orgs = GetOrgsFromOrgRows(_orgRows);
-            }
-            if (_orgRowsColSkip != null)
-            {
-                _orgs = GetOrgsFromOrgRowsColSkipped(_orgRowsColSkip);
-            }
-            if (_orgRowsIndented != null)
-            {
-                _orgs = GetOrgsFromOrgRowsIndented(_orgRowsIndented);
-            }
-            if (_orgRowsMultiline != null)
-            {
-                _orgs = GetOrgsFromOrgRowsIndented(_orgRowsMultiline);
-            }
+            // Dummy step
         }
 
         private Dictionary<string, Org> GetOrgsFromOrgRows(IEnumerable<OrgRow> rows)
