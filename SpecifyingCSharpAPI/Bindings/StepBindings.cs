@@ -47,12 +47,30 @@ namespace SpecifyingCSharpAPI.Bindings
             _context.ResultOrgUnits = infoManager.GetAllChildren(orgUnit);
         }
 
+        [When(@"I call GetAllChildren\(([A-Za-z]*), includeSelf:(true|false)\)")]
+        public void WhenICallGetAllChildrenOrgUnit(string orgUnitShortName, bool includeSelf)
+        {
+            var orgUnit = _context.OrgStruct[orgUnitShortName];
+
+            var infoManager = _context.GetInfoManager();
+
+            _context.ResultOrgUnits = infoManager.GetAllChildren(orgUnit, includeSelf);
+        }
+
         [When(@"I call GetAllChildren\(""([A-Za-z]*)""\)")]
         public void WhenICallGetAllChildrenString(string orgUnitShortName)
         {
             var infoManager = _context.GetInfoManager();
 
             _context.ResultOrgUnits = infoManager.GetAllChildren(orgUnitShortName);
+        }
+
+        [When(@"I call GetAllChildren\(""([A-Za-z]*)"", includeSelf:(true|false)\)")]
+        public void WhenICallGetAllChildrenString(string orgUnitShortName, bool includeSelf)
+        {
+            var infoManager = _context.GetInfoManager();
+
+            _context.ResultOrgUnits = infoManager.GetAllChildren(orgUnitShortName, includeSelf);
         }
 
         [Then(@"I get the org units")]

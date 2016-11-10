@@ -48,12 +48,41 @@ Scenario: Querying all children of an org unit using the method InfoManager.GetA
 		| SWPmo    |
 		| SWEng    |
 
+
+Scenario: Querying all children of an org unit using the method InfoManager.GetAllChildren(OrgUnit orgUnit, bool includeSelf)
+
+	Given for each org unit I have an OrgUnit object named orgUnit.Shortname
+
+	When I call GetAllChildren(HOTech, includeSelf:true)
+
+	Then I get the org units
+		| Org Unit |
+		| HOTech   |
+		| ITInfra  |
+		| SWDevSvc |
+		| SWPmo    |
+		| SWEng    |
+
+
 Scenario: Querying all the children of an org unit using the method InfoManager.GetAllChildren(string orgUnitShortName)
 
 	When I call GetAllChildren("HOTech")
 
 	Then I get the org units
 		| Org Unit |
+		| ITInfra  |
+		| SWDevSvc |
+		| SWPmo    |
+		| SWEng    |
+
+
+Scenario: Querying all the children of an org unit using the method InfoManager.GetAllChildren(string orgUnitShortName, bool includeSelf)
+
+	When I call GetAllChildren("HOTech", includeSelf:true)
+
+	Then I get the org units
+		| Org Unit |
+		| HOTech   |
 		| ITInfra  |
 		| SWDevSvc |
 		| SWPmo    |

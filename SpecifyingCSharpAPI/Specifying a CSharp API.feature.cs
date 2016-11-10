@@ -167,22 +167,26 @@ this.FeatureBackground();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Querying all the children of an org unit using the method InfoManager.GetAllChild" +
-            "ren(string orgUnitShortName)")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Querying all children of an org unit using the method InfoManager.GetAllChildren(" +
+            "OrgUnit orgUnit, bool includeSelf)")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Querying the Org structure using the APIs provided by the InfoManager")]
-        public virtual void QueryingAllTheChildrenOfAnOrgUnitUsingTheMethodInfoManager_GetAllChildrenStringOrgUnitShortName()
+        public virtual void QueryingAllChildrenOfAnOrgUnitUsingTheMethodInfoManager_GetAllChildrenOrgUnitOrgUnitBoolIncludeSelf()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Querying all the children of an org unit using the method InfoManager.GetAllChild" +
-                    "ren(string orgUnitShortName)", ((string[])(null)));
-#line 51
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Querying all children of an org unit using the method InfoManager.GetAllChildren(" +
+                    "OrgUnit orgUnit, bool includeSelf)", ((string[])(null)));
+#line 52
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 53
- testRunner.When("I call GetAllChildren(\"HOTech\")", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 54
+ testRunner.Given("for each org unit I have an OrgUnit object named orgUnit.Shortname", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 56
+ testRunner.When("I call GetAllChildren(HOTech, includeSelf:true)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Org Unit"});
+            table4.AddRow(new string[] {
+                        "HOTech"});
             table4.AddRow(new string[] {
                         "ITInfra"});
             table4.AddRow(new string[] {
@@ -191,8 +195,72 @@ this.FeatureBackground();
                         "SWPmo"});
             table4.AddRow(new string[] {
                         "SWEng"});
-#line 55
+#line 58
  testRunner.Then("I get the org units", ((string)(null)), table4, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Querying all the children of an org unit using the method InfoManager.GetAllChild" +
+            "ren(string orgUnitShortName)")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Querying the Org structure using the APIs provided by the InfoManager")]
+        public virtual void QueryingAllTheChildrenOfAnOrgUnitUsingTheMethodInfoManager_GetAllChildrenStringOrgUnitShortName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Querying all the children of an org unit using the method InfoManager.GetAllChild" +
+                    "ren(string orgUnitShortName)", ((string[])(null)));
+#line 67
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line 69
+ testRunner.When("I call GetAllChildren(\"HOTech\")", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Org Unit"});
+            table5.AddRow(new string[] {
+                        "ITInfra"});
+            table5.AddRow(new string[] {
+                        "SWDevSvc"});
+            table5.AddRow(new string[] {
+                        "SWPmo"});
+            table5.AddRow(new string[] {
+                        "SWEng"});
+#line 71
+ testRunner.Then("I get the org units", ((string)(null)), table5, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Querying all the children of an org unit using the method InfoManager.GetAllChild" +
+            "ren(string orgUnitShortName, bool includeSelf)")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Querying the Org structure using the APIs provided by the InfoManager")]
+        public virtual void QueryingAllTheChildrenOfAnOrgUnitUsingTheMethodInfoManager_GetAllChildrenStringOrgUnitShortNameBoolIncludeSelf()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Querying all the children of an org unit using the method InfoManager.GetAllChild" +
+                    "ren(string orgUnitShortName, bool includeSelf)", ((string[])(null)));
+#line 79
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line 81
+ testRunner.When("I call GetAllChildren(\"HOTech\", includeSelf:true)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Org Unit"});
+            table6.AddRow(new string[] {
+                        "HOTech"});
+            table6.AddRow(new string[] {
+                        "ITInfra"});
+            table6.AddRow(new string[] {
+                        "SWDevSvc"});
+            table6.AddRow(new string[] {
+                        "SWPmo"});
+            table6.AddRow(new string[] {
+                        "SWEng"});
+#line 83
+ testRunner.Then("I get the org units", ((string)(null)), table6, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
