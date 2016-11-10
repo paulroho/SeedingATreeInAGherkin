@@ -59,6 +59,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>An org structure can be expressed in gherkin.feature</DependentUpon>
     </Compile>
+    <Compile Include="Bindings\OrgContext.cs" />
     <Compile Include="Bindings\StepBindings.cs" />
     <Compile Include="Builders\BuilderRoot.cs" />
     <Compile Include="Domain\Org.cs" />
