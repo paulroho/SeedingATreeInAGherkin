@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using SeedingATree.Domain;
+﻿using SeedingATree.Domain;
 
 namespace SeedingATree.Bindings
 {
     public class OrgBindingContext
     {
-        public Dictionary<string, Org> Orgs { get; set; }
+        public OrgStruct OrgStruct { get; set; }
     }
 }
