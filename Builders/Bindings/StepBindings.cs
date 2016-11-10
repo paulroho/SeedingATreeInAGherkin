@@ -23,21 +23,21 @@ namespace SeedingATree.Bindings
         public void GivenIHaveTheFollowingOrganizations(Table table)
         {
             var orgRows = table.CreateSet<OrgRow>();
-            _context.Orgs = GetOrgsFromOrgRows(orgRows);
+            _context.OrgStruct = GetOrgStructFromOrgRows(orgRows);
         }
 
         [Given(@"I have the following levelled org structure")]
         public void GivenIHaveTheFollowingLevelledOrgStructure(Table table)
         {
             var orgRows = table.CreateSet<OrgRowColSkipped>();
-            _context.Orgs = GetOrgsFromOrgRowsColSkipped(orgRows);
+            _context.OrgStruct = GetOrgStructFromOrgRowsColSkipped(orgRows);
         }
 
         [Given(@"I have the following intended org structure")]
         public void GivenIHaveTheFollowingIntendedOrgStructure(Table table)
         {
             var orgRows = table.CreateSet<OrgRowIndented>();
-            _context.Orgs = GetOrgsFromOrgRowsIndented(orgRows);
+            _context.OrgStruct = GetOrgStructFromOrgRowsIndented(orgRows);
         }
 
         [Given(@"I have the following intended org structure as text")]
@@ -45,7 +45,7 @@ namespace SeedingATree.Bindings
         {
             var orgRows = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
                 .Select(l => new OrgRowIndented {OrgAtLevel = l.TrimEnd()});
-            _context.Orgs = GetOrgsFromOrgRowsIndented(orgRows);
+            _context.OrgStruct = GetOrgStructFromOrgRowsIndented(orgRows);
         }
 
         [Given(@"I have the following intended org structure as text indenting by '(.*)'")]
@@ -65,7 +65,7 @@ namespace SeedingATree.Bindings
                         IndentStepLength = indentStepLength,
                         ReplacePattern = replacePattern,
                     });
-            _context.Orgs = GetOrgsFromOrgRowsIndented(orgRows);
+            _context.OrgStruct = GetOrgStructFromOrgRowsIndented(orgRows);
         }
 
         [When(@"I execute the specs")]
@@ -74,24 +74,24 @@ namespace SeedingATree.Bindings
             // Dummy step
         }
 
-        private Dictionary<string, Org> GetOrgsFromOrgRows(IEnumerable<OrgRow> rows)
+        private OrgStruct GetOrgStructFromOrgRows(IEnumerable<OrgRow> rows)
         {
-            var orgs = new Dictionary<string, Org>();
+            var orgStruct = new OrgStruct();
             foreach (var row in rows)
             {
                 var org = new Org(row.Name, row.Name, OrgType.Normal);
                 if (!string.IsNullOrEmpty(row.Parent))
                 {
-                    org.Parent = orgs[row.Parent];
+                    org.Parent = orgStruct[row.Parent];
                 }
-                orgs.Add(org.ShortName, org);
+                orgStruct.Add(org);
             }
-            return orgs;
+            return orgStruct;
         }
 
-        private Dictionary<string, Org> GetOrgsFromOrgRowsColSkipped(IEnumerable<OrgRowColSkipped> rows)
+        private OrgStruct GetOrgStructFromOrgRowsColSkipped(IEnumerable<OrgRowColSkipped> rows)
         {
-            var orgs = new Dictionary<string, Org>();
+            var orgStruct = new OrgStruct();
             var levels = new Dictionary<int, Org>();
             foreach (var row in rows)
             {
@@ -102,16 +102,16 @@ namespace SeedingATree.Bindings
                 {
                     org.Parent = levels[level - 1];
                 }
-                orgs.Add(org.ShortName, org);
+                orgStruct.Add(org);
 
                 levels[level] = org;
             }
-            return orgs;
+            return orgStruct;
         }
 
-        private Dictionary<string, Org> GetOrgsFromOrgRowsIndented(IEnumerable<OrgRowIndented> rows)
+        private OrgStruct GetOrgStructFromOrgRowsIndented(IEnumerable<OrgRowIndented> rows)
         {
-            var orgs = new Dictionary<string, Org>();
+            var orgStruct = new OrgStruct();
             var levels = new Dictionary<int, Org>();
             foreach (var row in rows)
             {
@@ -122,17 +122,17 @@ namespace SeedingATree.Bindings
                 {
                     org.Parent = levels[level - 1];
                 }
-                orgs.Add(org.ShortName, org);
+                orgStruct.Add(org);
 
                 levels[level] = org;
             }
-            return orgs;
+            return orgStruct;
         }
 
         [Then(@"I get the correct organizations\.")]
         public void ThenIGetTheCorrectOrganizations_()
         {
-            var orgs = _context.Orgs;
+            var orgs = _context.OrgStruct.Orgs;
             var orgBrd = orgs["Board"];
             var orgHOFin = orgs["HOFin"];
             var orgHOTech = orgs["HOTech"];
