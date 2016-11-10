@@ -28,9 +28,13 @@ namespace SeedingATree.Builders
 
             public void HasChild(string shortName, params Action<OrgBuilder>[] builderActions)
             {
-                var childOrg = new OrgUnit(shortName, "Long" + shortName, OrgUnitType.Normal, _orgUnit);
-                _orgStruct.Add(childOrg);
-                var builder = new OrgBuilder(_orgStruct, childOrg);
+                var childOrgUnit = new OrgUnit(
+                    shortName: shortName,
+                    name: "Long" + shortName,
+                    type: OrgUnitType.Normal,
+                    parent: _orgUnit);
+                _orgStruct.Add(childOrgUnit);
+                var builder = new OrgBuilder(_orgStruct, childOrgUnit);
                 ExecuteActions(builder, builderActions);
             }
 

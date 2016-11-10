@@ -22,30 +22,30 @@ namespace SeedingATree.Bindings
         [Given(@"I have the following org units")]
         public void GivenIHaveTheFollowingOrgUnits(Table table)
         {
-            var orgRows = table.CreateSet<OrgRow>();
-            _context.OrgStruct = GetOrgStructFromOrgRows(orgRows);
+            var orgUnitRows = table.CreateSet<OrgUnitRow>();
+            _context.OrgStruct = GetOrgStructFromOrgUnitRows(orgUnitRows);
         }
 
         [Given(@"I have the following levelled org structure")]
         public void GivenIHaveTheFollowingLevelledOrgStructure(Table table)
         {
-            var orgRows = table.CreateSet<OrgRowColSkipped>();
-            _context.OrgStruct = GetOrgStructFromOrgRowsColSkipped(orgRows);
+            var orgUnitRows = table.CreateSet<OrgUnitRowColSkipped>();
+            _context.OrgStruct = GetOrgStructFromOrgUnitRowsColSkipped(orgUnitRows);
         }
 
         [Given(@"I have the following intended org structure")]
         public void GivenIHaveTheFollowingIntendedOrgStructure(Table table)
         {
-            var orgRows = table.CreateSet<OrgRowIndented>();
-            _context.OrgStruct = GetOrgStructFromOrgRowsIndented(orgRows);
+            var orgUnitRows = table.CreateSet<OrgUnitRowIndented>();
+            _context.OrgStruct = GetOrgStructFromOrgUnitRowsIndented(orgUnitRows);
         }
 
         [Given(@"I have the following intended org structure as text")]
         public void GivenIHaveTheFollowingIntendedOrgStructureAsText(string asciiArt)
         {
-            var orgRows = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
-                .Select(l => new OrgRowIndented {OrgUnitAtLevel = l.TrimEnd()});
-            _context.OrgStruct = GetOrgStructFromOrgRowsIndented(orgRows);
+            var orgUnitRows = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
+                .Select(l => new OrgUnitRowIndented {OrgUnitAtLevel = l.TrimEnd()});
+            _context.OrgStruct = GetOrgStructFromOrgUnitRowsIndented(orgUnitRows);
         }
 
         [Given(@"I have the following intended org structure as text indenting by '(.*)'")]
@@ -56,16 +56,16 @@ namespace SeedingATree.Bindings
             var searchPattern = $@"(({whitespaces})*({Regex.Escape(indentationString)}))(.*)";
             var replacePattern = "$4";
 
-            var orgRows = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
+            var orgUnitRows = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
                 .Select(
-                    l => new OrgRowIndented
+                    l => new OrgUnitRowIndented
                     {
                         OrgUnitAtLevel = l.TrimEnd(),
                         SearchPattern = searchPattern,
                         IndentStepLength = indentStepLength,
                         ReplacePattern = replacePattern,
                     });
-            _context.OrgStruct = GetOrgStructFromOrgRowsIndented(orgRows);
+            _context.OrgStruct = GetOrgStructFromOrgUnitRowsIndented(orgUnitRows);
         }
 
         [When(@"I execute the specs")]
@@ -74,7 +74,7 @@ namespace SeedingATree.Bindings
             // Dummy step
         }
 
-        private OrgStruct GetOrgStructFromOrgRows(IEnumerable<OrgRow> rows)
+        private OrgStruct GetOrgStructFromOrgUnitRows(IEnumerable<OrgUnitRow> rows)
         {
             var orgStruct = new OrgStruct();
             foreach (var row in rows)
@@ -89,7 +89,7 @@ namespace SeedingATree.Bindings
             return orgStruct;
         }
 
-        private OrgStruct GetOrgStructFromOrgRowsColSkipped(IEnumerable<OrgRowColSkipped> rows)
+        private OrgStruct GetOrgStructFromOrgUnitRowsColSkipped(IEnumerable<OrgUnitRowColSkipped> rows)
         {
             var orgStruct = new OrgStruct();
             var levels = new Dictionary<int, OrgUnit>();
@@ -109,7 +109,7 @@ namespace SeedingATree.Bindings
             return orgStruct;
         }
 
-        private OrgStruct GetOrgStructFromOrgRowsIndented(IEnumerable<OrgRowIndented> rows)
+        private OrgStruct GetOrgStructFromOrgUnitRowsIndented(IEnumerable<OrgUnitRowIndented> rows)
         {
             var orgStruct = new OrgStruct();
             var levels = new Dictionary<int, OrgUnit>();
@@ -159,7 +159,7 @@ namespace SeedingATree.Bindings
         }
     }
 
-    public class OrgRowIndented
+    public class OrgUnitRowIndented
     {
         public string OrgUnitAtLevel { get; set; }
 
@@ -171,7 +171,7 @@ namespace SeedingATree.Bindings
         public int Level => (OrgUnitAtLevel.Length - Name.Length)/IndentStepLength + 1;
     }
 
-    public class OrgRowColSkipped
+    public class OrgUnitRowColSkipped
     {
         public string Level1 { get; set; }
         public string Level2 { get; set; }
@@ -200,7 +200,7 @@ namespace SeedingATree.Bindings
         }
     }
 
-    public class OrgRow
+    public class OrgUnitRow
     {
         public string Name { get; set; }
         public string Parent { get; set; }
