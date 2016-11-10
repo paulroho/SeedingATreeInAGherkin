@@ -62,10 +62,10 @@
     <Compile Include="Bindings\OrgBindingContext.cs" />
     <Compile Include="Bindings\StepBindings.cs" />
     <Compile Include="Builders\BuilderRoot.cs" />
-    <Compile Include="Domain\Org.cs" />
+    <Compile Include="Domain\OrgUnit.cs" />
     <Compile Include="Domain\OrgStruct.cs" />
     <Compile Include="Builders\OrgStructBuilder.cs" />
-    <Compile Include="Builders\OrgBuilder.cs" />
+    <Compile Include="Builders\OrgUnitBuilder.cs" />
     <Compile Include="OrgStructBuildingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

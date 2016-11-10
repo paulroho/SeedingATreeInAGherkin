@@ -18,17 +18,17 @@ namespace SeedingATree.Builders
         public class OrgBuilder
         {
             private readonly OrgStruct _orgStruct;
-            private readonly Org _org;
+            private readonly OrgUnit _orgUnit;
 
-            public OrgBuilder(OrgStruct orgStruct, Org org = null)
+            public OrgBuilder(OrgStruct orgStruct, OrgUnit orgUnit = null)
             {
                 _orgStruct = orgStruct;
-                _org = org;
+                _orgUnit = orgUnit;
             }
 
             public void HasChild(string shortName, params Action<OrgBuilder>[] builderActions)
             {
-                var childOrg = new Org(shortName, "Long" + shortName, OrgType.Normal, _org);
+                var childOrg = new OrgUnit(shortName, "Long" + shortName, OrgUnitType.Normal, _orgUnit);
                 _orgStruct.Add(childOrg);
                 var builder = new OrgBuilder(_orgStruct, childOrg);
                 ExecuteActions(builder, builderActions);

@@ -19,8 +19,8 @@ namespace SeedingATree.Bindings
             _context = context;
         }
 
-        [Given(@"I have the following organizations")]
-        public void GivenIHaveTheFollowingOrganizations(Table table)
+        [Given(@"I have the following org units")]
+        public void GivenIHaveTheFollowingOrgUnits(Table table)
         {
             var orgRows = table.CreateSet<OrgRow>();
             _context.OrgStruct = GetOrgStructFromOrgRows(orgRows);
@@ -44,7 +44,7 @@ namespace SeedingATree.Bindings
         public void GivenIHaveTheFollowingIntendedOrgStructureAsText(string asciiArt)
         {
             var orgRows = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
-                .Select(l => new OrgRowIndented {OrgAtLevel = l.TrimEnd()});
+                .Select(l => new OrgRowIndented {OrgUnitAtLevel = l.TrimEnd()});
             _context.OrgStruct = GetOrgStructFromOrgRowsIndented(orgRows);
         }
 
@@ -60,7 +60,7 @@ namespace SeedingATree.Bindings
                 .Select(
                     l => new OrgRowIndented
                     {
-                        OrgAtLevel = l.TrimEnd(),
+                        OrgUnitAtLevel = l.TrimEnd(),
                         SearchPattern = searchPattern,
                         IndentStepLength = indentStepLength,
                         ReplacePattern = replacePattern,
@@ -79,7 +79,7 @@ namespace SeedingATree.Bindings
             var orgStruct = new OrgStruct();
             foreach (var row in rows)
             {
-                var org = new Org(row.Name, row.Name, OrgType.Normal);
+                var org = new OrgUnit(row.Name, row.Name, OrgUnitType.Normal);
                 if (!string.IsNullOrEmpty(row.Parent))
                 {
                     org.Parent = orgStruct[row.Parent];
@@ -92,11 +92,11 @@ namespace SeedingATree.Bindings
         private OrgStruct GetOrgStructFromOrgRowsColSkipped(IEnumerable<OrgRowColSkipped> rows)
         {
             var orgStruct = new OrgStruct();
-            var levels = new Dictionary<int, Org>();
+            var levels = new Dictionary<int, OrgUnit>();
             foreach (var row in rows)
             {
                 var name = row.Name;
-                var org = new Org(name, name, OrgType.Normal);
+                var org = new OrgUnit(name, name, OrgUnitType.Normal);
                 var level = row.Level;
                 if (level > 1)
                 {
@@ -112,11 +112,11 @@ namespace SeedingATree.Bindings
         private OrgStruct GetOrgStructFromOrgRowsIndented(IEnumerable<OrgRowIndented> rows)
         {
             var orgStruct = new OrgStruct();
-            var levels = new Dictionary<int, Org>();
+            var levels = new Dictionary<int, OrgUnit>();
             foreach (var row in rows)
             {
                 var name = row.Name;
-                var org = new Org(name, name, OrgType.Normal);
+                var org = new OrgUnit(name, name, OrgUnitType.Normal);
                 var level = row.Level;
                 if (level > 1)
                 {
@@ -129,17 +129,17 @@ namespace SeedingATree.Bindings
             return orgStruct;
         }
 
-        [Then(@"I get the correct organizations\.")]
-        public void ThenIGetTheCorrectOrganizations_()
+        [Then(@"I get the correct org units\.")]
+        public void ThenIGetTheCorrectOrgUnits()
         {
-            var orgs = _context.OrgStruct;
-            var orgBrd = orgs["Board"];
-            var orgHOFin = orgs["HOFin"];
-            var orgHOTech = orgs["HOTech"];
-            var orgItInfra = orgs["ITInfra"];
-            var orgSds = orgs["SWDevSvc"];
-            var orgSwPmo = orgs["SWPmo"];
-            var orgSwEng = orgs["SWEng"];
+            var orgUnits = _context.OrgStruct;
+            var orgBrd = orgUnits["Board"];
+            var orgHOFin = orgUnits["HOFin"];
+            var orgHOTech = orgUnits["HOTech"];
+            var orgItInfra = orgUnits["ITInfra"];
+            var orgSds = orgUnits["SWDevSvc"];
+            var orgSwPmo = orgUnits["SWPmo"];
+            var orgSwEng = orgUnits["SWEng"];
 
             Assert.AreEqual("Board", orgBrd.ShortName);
             Assert.AreEqual("HOFin", orgHOFin.ShortName);
@@ -161,14 +161,14 @@ namespace SeedingATree.Bindings
 
     public class OrgRowIndented
     {
-        public string OrgAtLevel { get; set; }
+        public string OrgUnitAtLevel { get; set; }
 
         public string SearchPattern { get; set; } = @"([. ] )*(.*)";
         public int IndentStepLength { get; set; } = 2;
         public string ReplacePattern { get; set; } = "$2";
 
-        public string Name => Regex.Replace(OrgAtLevel, SearchPattern, ReplacePattern);
-        public int Level => (OrgAtLevel.Length - Name.Length)/IndentStepLength + 1;
+        public string Name => Regex.Replace(OrgUnitAtLevel, SearchPattern, ReplacePattern);
+        public int Level => (OrgUnitAtLevel.Length - Name.Length)/IndentStepLength + 1;
     }
 
     public class OrgRowColSkipped
