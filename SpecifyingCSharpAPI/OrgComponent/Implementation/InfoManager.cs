@@ -15,30 +15,30 @@ namespace SpecifyingCSharpAPI.OrgComponent.Implementation
             _orgStructure = context.OrgStructure;
         }
 
-        public IList<Org> GetDirectChildren(Org org)
+        public IList<OrgUnit> GetDirectChildren(OrgUnit orgUnit)
         {
-            return _orgStructure.Orgs.Where(o => o.Parent == org).ToList();
+            return _orgStructure.OrgUnits.Where(ou => ou.Parent == orgUnit).ToList();
         }
 
-        public IList<Org> GetDirectChildren(string orgShortName)
+        public IList<OrgUnit> GetDirectChildren(string orgUnitShortName)
         {
-            return GetDirectChildren(_orgStructure[orgShortName]);
+            return GetDirectChildren(_orgStructure[orgUnitShortName]);
         }
 
-        public IList<Org> GetAllChildren(Org org)
+        public IList<OrgUnit> GetAllChildren(OrgUnit orgUnit)
         {
-            var orgs = _orgStructure.Orgs.Where(o => o.Parent == org).ToList();
-            foreach (var o in orgs.ToList())
+            var orgUnits = _orgStructure.OrgUnits.Where(ou => ou.Parent == orgUnit).ToList();
+            foreach (var ou in orgUnits.ToList())
             {
-                orgs.AddRange(GetAllChildren(o.ShortName));
+                orgUnits.AddRange(GetAllChildren(ou.ShortName));
             }
-            return orgs;
+            return orgUnits;
         }
 
-        public IList<Org> GetAllChildren(string orgShortName)
+        public IList<OrgUnit> GetAllChildren(string orgUnitShortName)
         {
-            var org = _orgStructure[orgShortName];
-            return GetAllChildren(org);
+            var orgUnit = _orgStructure[orgUnitShortName];
+            return GetAllChildren(orgUnit);
         }
     }
 }

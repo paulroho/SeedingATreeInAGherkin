@@ -13,6 +13,8 @@ namespace SeedingATree.Domain
             _orgUnits = new Dictionary<string, OrgUnit>();
         }
 
+        public IList<OrgUnit> OrgUnits => _orgUnits.Values.ToList();
+
         public void Add(OrgUnit orgUnit)
         {
             _orgUnits.Add(orgUnit.ShortName, orgUnit);

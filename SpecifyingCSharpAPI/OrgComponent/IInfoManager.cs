@@ -5,9 +5,9 @@ namespace SpecifyingCSharpAPI.OrgComponent
 {
     public interface IInfoManager
     {
-        IList<Org> GetDirectChildren(Org org);
-        IList<Org> GetDirectChildren(string orgShortName);
-        IList<Org> GetAllChildren(Org org);
-        IList<Org> GetAllChildren(string orgShortName);
+        IList<OrgUnit> GetDirectChildren(OrgUnit orgUnit);
+        IList<OrgUnit> GetDirectChildren(string orgUnitShortName);
+        IList<OrgUnit> GetAllChildren(OrgUnit orgUnit);
+        IList<OrgUnit> GetAllChildren(string orgUnitShortName);
     }
 }
