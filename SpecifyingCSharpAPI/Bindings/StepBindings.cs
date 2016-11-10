@@ -19,7 +19,7 @@ namespace SpecifyingCSharpAPI.Bindings
             // dummy step
         }
 
-        [When(@"I call GetDirectChildren\(([A-Za-z]*)\)")]
+        [When(@"I call `?GetDirectChildren\(([A-Za-z]*)\)`?")]
         public void WhenICallGetDirectChildrenOrgUnit(string orgUnitShortName)
         {
             var orgUnit = _context.OrgStruct[orgUnitShortName];
@@ -29,7 +29,7 @@ namespace SpecifyingCSharpAPI.Bindings
             _context.ResultOrgUnits = infoManager.GetDirectChildren(orgUnit);
         }
 
-        [When(@"I call GetDirectChildren\(""([A-Za-z]*)""\)")]
+        [When(@"I call `?GetDirectChildren\(""([A-Za-z]*)""\)`?")]
         public void WhenICallGetDirectChildrenString(string orgUnitShortName)
         {
             var infoManager = _context.GetInfoManager();
@@ -37,7 +37,7 @@ namespace SpecifyingCSharpAPI.Bindings
             _context.ResultOrgUnits = infoManager.GetDirectChildren(orgUnitShortName);
         }
 
-        [When(@"I call GetAllChildren\(([A-Za-z]*)\)")]
+        [When(@"I call `?GetAllChildren\(([A-Za-z]*)\)`?")]
         public void WhenICallGetAllChildrenOrgUnit(string orgUnitShortName)
         {
             var orgUnit = _context.OrgStruct[orgUnitShortName];
@@ -47,7 +47,7 @@ namespace SpecifyingCSharpAPI.Bindings
             _context.ResultOrgUnits = infoManager.GetAllChildren(orgUnit);
         }
 
-        [When(@"I call GetAllChildren\(([A-Za-z]*), includeSelf:(true|false)\)")]
+        [When(@"I call `?GetAllChildren\(([A-Za-z]*), includeSelf:(true|false)\)`?")]
         public void WhenICallGetAllChildrenOrgUnit(string orgUnitShortName, bool includeSelf)
         {
             var orgUnit = _context.OrgStruct[orgUnitShortName];
@@ -57,7 +57,7 @@ namespace SpecifyingCSharpAPI.Bindings
             _context.ResultOrgUnits = infoManager.GetAllChildren(orgUnit, includeSelf);
         }
 
-        [When(@"I call GetAllChildren\(""([A-Za-z]*)""\)")]
+        [When(@"I call `?GetAllChildren\(""([A-Za-z]*)""\)`?")]
         public void WhenICallGetAllChildrenString(string orgUnitShortName)
         {
             var infoManager = _context.GetInfoManager();
@@ -65,7 +65,7 @@ namespace SpecifyingCSharpAPI.Bindings
             _context.ResultOrgUnits = infoManager.GetAllChildren(orgUnitShortName);
         }
 
-        [When(@"I call GetAllChildren\(""([A-Za-z]*)"", includeSelf:(true|false)\)")]
+        [When(@"I call `?GetAllChildren\(""([A-Za-z]*)"", includeSelf:(true|false)\)`?")]
         public void WhenICallGetAllChildrenString(string orgUnitShortName, bool includeSelf)
         {
             var infoManager = _context.GetInfoManager();

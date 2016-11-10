@@ -17,7 +17,7 @@ Scenario: Querying the direct children of an org unit using the method InfoManag
 
 	Given for each org unit I have an OrgUnit object named orgUnit.Shortname
 
-	When I call GetDirectChildren(HOTech)
+	When I call `GetDirectChildren(HOTech)`
 
 	Then I get the org units
 		| Org Unit |
@@ -27,7 +27,7 @@ Scenario: Querying the direct children of an org unit using the method InfoManag
 
 Scenario: Querying the direct children of an org unit using the method InfoManager.GetDirectChildren(string orgUnitShortName)
 
-	When I call GetDirectChildren("HOTech")
+	When I call `GetDirectChildren("HOTech")`
 
 	Then I get the org units
 		| Org Unit |
@@ -39,7 +39,7 @@ Scenario: Querying all children of an org unit using the method InfoManager.GetA
 
 	Given for each org unit I have an OrgUnit object named orgUnit.Shortname
 
-	When I call GetAllChildren(HOTech)
+	When I call `GetAllChildren(HOTech)`
 
 	Then I get the org units
 		| Org Unit |
@@ -53,7 +53,7 @@ Scenario: Querying all children of an org unit using the method InfoManager.GetA
 
 	Given for each org unit I have an OrgUnit object named orgUnit.Shortname
 
-	When I call GetAllChildren(HOTech, includeSelf:true)
+	When I call `GetAllChildren(HOTech, includeSelf:true)`
 
 	Then I get the org units
 		| Org Unit |
@@ -66,7 +66,7 @@ Scenario: Querying all children of an org unit using the method InfoManager.GetA
 
 Scenario: Querying all the children of an org unit using the method InfoManager.GetAllChildren(string orgUnitShortName)
 
-	When I call GetAllChildren("HOTech")
+	When I call `GetAllChildren("HOTech")`
 
 	Then I get the org units
 		| Org Unit |
@@ -78,7 +78,7 @@ Scenario: Querying all the children of an org unit using the method InfoManager.
 
 Scenario: Querying all the children of an org unit using the method InfoManager.GetAllChildren(string orgUnitShortName, bool includeSelf)
 
-	When I call GetAllChildren("HOTech", includeSelf:true)
+	When I call `GetAllChildren("HOTech", includeSelf:true)`
 
 	Then I get the org units
 		| Org Unit |

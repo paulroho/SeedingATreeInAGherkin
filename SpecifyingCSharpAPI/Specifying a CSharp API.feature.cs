@@ -92,7 +92,7 @@ this.FeatureBackground();
 #line 18
  testRunner.Given("for each org unit I have an OrgUnit object named orgUnit.Shortname", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 20
- testRunner.When("I call GetDirectChildren(HOTech)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call `GetDirectChildren(HOTech)`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Org Unit"});
@@ -119,7 +119,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line 30
- testRunner.When("I call GetDirectChildren(\"HOTech\")", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call `GetDirectChildren(\"HOTech\")`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Org Unit"});
@@ -148,7 +148,7 @@ this.FeatureBackground();
 #line 40
  testRunner.Given("for each org unit I have an OrgUnit object named orgUnit.Shortname", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 42
- testRunner.When("I call GetAllChildren(HOTech)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call `GetAllChildren(HOTech)`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Org Unit"});
@@ -181,7 +181,7 @@ this.FeatureBackground();
 #line 54
  testRunner.Given("for each org unit I have an OrgUnit object named orgUnit.Shortname", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 56
- testRunner.When("I call GetAllChildren(HOTech, includeSelf:true)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call `GetAllChildren(HOTech, includeSelf:true)`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Org Unit"});
@@ -214,7 +214,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line 69
- testRunner.When("I call GetAllChildren(\"HOTech\")", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call `GetAllChildren(\"HOTech\")`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Org Unit"});
@@ -245,7 +245,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line 81
- testRunner.When("I call GetAllChildren(\"HOTech\", includeSelf:true)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call `GetAllChildren(\"HOTech\", includeSelf:true)`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Org Unit"});
