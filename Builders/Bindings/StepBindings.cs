@@ -12,9 +12,9 @@ namespace SeedingATree.Bindings
     [Binding]
     public class StepBindings
     {
-        private readonly OrgContext _context;
+        private readonly OrgBindingContext _context;
 
-        public StepBindings(OrgContext context)
+        public StepBindings(OrgBindingContext context)
         {
             _context = context;
         }

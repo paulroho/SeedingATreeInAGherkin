@@ -3,7 +3,7 @@ using SeedingATree.Domain;
 
 namespace SeedingATree.Bindings
 {
-    public class OrgContext
+    public class OrgBindingContext
     {
         public Dictionary<string, Org> Orgs { get; set; }
     }
