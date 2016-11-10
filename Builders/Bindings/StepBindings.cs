@@ -12,27 +12,32 @@ namespace SeedingATree.Bindings
     [Binding]
     public class StepBindings
     {
-        private Dictionary<string, Org> _orgs;
+        private readonly OrgContext _context;
+
+        public StepBindings(OrgContext context)
+        {
+            _context = context;
+        }
 
         [Given(@"I have the following organizations")]
         public void GivenIHaveTheFollowingOrganizations(Table table)
         {
             var orgRows = table.CreateSet<OrgRow>();
-            _orgs = GetOrgsFromOrgRows(orgRows);
+            _context.Orgs = GetOrgsFromOrgRows(orgRows);
         }
 
         [Given(@"I have the following levelled org structure")]
         public void GivenIHaveTheFollowingLevelledOrgStructure(Table table)
         {
             var orgRows = table.CreateSet<OrgRowColSkipped>();
-            _orgs = GetOrgsFromOrgRowsColSkipped(orgRows);
+            _context.Orgs = GetOrgsFromOrgRowsColSkipped(orgRows);
         }
 
         [Given(@"I have the following intended org structure")]
         public void GivenIHaveTheFollowingIntendedOrgStructure(Table table)
         {
             var orgRows = table.CreateSet<OrgRowIndented>();
-            _orgs = GetOrgsFromOrgRowsIndented(orgRows);
+            _context.Orgs = GetOrgsFromOrgRowsIndented(orgRows);
         }
 
         [Given(@"I have the following intended org structure as text")]
@@ -40,7 +45,7 @@ namespace SeedingATree.Bindings
         {
             var orgRows = asciiArt.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries)
                 .Select(l => new OrgRowIndented {OrgAtLevel = l.TrimEnd()});
-            _orgs = GetOrgsFromOrgRowsIndented(orgRows);
+            _context.Orgs = GetOrgsFromOrgRowsIndented(orgRows);
         }
 
         [Given(@"I have the following intended org structure as text indenting by '(.*)'")]
@@ -60,7 +65,7 @@ namespace SeedingATree.Bindings
                         IndentStepLength = indentStepLength,
                         ReplacePattern = replacePattern,
                     });
-            _orgs = GetOrgsFromOrgRowsIndented(orgRows);
+            _context.Orgs = GetOrgsFromOrgRowsIndented(orgRows);
         }
 
         [When(@"I execute the specs")]
@@ -127,13 +132,14 @@ namespace SeedingATree.Bindings
         [Then(@"I get the correct organizations\.")]
         public void ThenIGetTheCorrectOrganizations_()
         {
-            var orgBrd = _orgs["Board"];
-            var orgHOFin = _orgs["HOFin"];
-            var orgHOTech = _orgs["HOTech"];
-            var orgItInfra = _orgs["ITInfra"];
-            var orgSds = _orgs["SWDevSvc"];
-            var orgSwPmo = _orgs["SWPmo"];
-            var orgSwEng = _orgs["SWEng"];
+            var orgs = _context.Orgs;
+            var orgBrd = orgs["Board"];
+            var orgHOFin = orgs["HOFin"];
+            var orgHOTech = orgs["HOTech"];
+            var orgItInfra = orgs["ITInfra"];
+            var orgSds = orgs["SWDevSvc"];
+            var orgSwPmo = orgs["SWPmo"];
+            var orgSwEng = orgs["SWEng"];
 
             Assert.AreEqual("Board", orgBrd.ShortName);
             Assert.AreEqual("HOFin", orgHOFin.ShortName);
