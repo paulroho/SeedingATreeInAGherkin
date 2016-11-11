@@ -5,6 +5,8 @@ Scenario: Seed an org tree using a table with a row for each org unit and parent
 		| Name     | Parent   |
 		| Board    |          |
 		| HOFin    | Board    |
+		| FinContr | HOFin    |
+		| FinStrat | HOFin    |
 		| HOTech   | Board    |
 		| ITInfra  | HOTech   |
 		| SWDevSvc | HOTech   |
@@ -22,6 +24,8 @@ Scenario: Seed an org tree using a table with a row for each org unit and column
 		| Level1 | Level2 | Level3   | Level4 |
 		| Board  |        |          |        |
 		|        | HOFin  |          |        |
+		|        |        | FinContr |        |
+		|        |        | FinStrat |        |
 		|        | HOTech |          |        |
 		|        |        | ITInfra  |        |
 		|        |        | SWDevSvc |        |
@@ -39,6 +43,8 @@ Scenario: Seed an org tree using a table with a row for each org unit and indent
 		| Org unit at level |
 		| Board             |
 		| . HOFin           |
+		| . . FinContr      |
+		| . . FinStrat      |
 		| . HOTech          |
 		| . . ITInfra       |
 		| . . SWDevSvc      |
@@ -56,6 +62,8 @@ Scenario: Seed an org tree using a multiline text with a row for each org unit a
 		"""
 		Board       
 		. HOFin     
+		. . FinContr
+		. . FinStrat
 		. HOTech    
 		. . ITInfra 
 		. . SWDevSvc
@@ -74,6 +82,8 @@ Scenario: Seed an org tree using a multiline text with a row for each org unit a
 		"""
 		Board       
 		  HOFin     
+		    FinContr
+		    FinStrat
 		  HOTech    
 		    ITInfra 
 		    SWDevSvc
@@ -92,6 +102,8 @@ Scenario: Seed an org tree using a multiline text with a row for each org unit a
 		"""
 		Board       
 		-> HOFin     
+		   -> FinContr
+		   -> FinStrat
 		-> HOTech    
 		   -> ITInfra 
 		   -> SWDevSvc

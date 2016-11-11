@@ -14,6 +14,10 @@ namespace SeedingATree
                 OrgUnitType.Executive);
             var ouHOFin = new OrgUnit("HOFin", "Head Office Finance", 
                 OrgUnitType.Executive, ouBrd);
+            var ouFinContr = new OrgUnit("FinContr", "Finance Controlling", 
+                OrgUnitType.Department, ouHOFin);
+            var ouFinStrat = new OrgUnit("FinStrat", "Finance Strategy", 
+                OrgUnitType.Department, ouHOFin);
             var ouHOTech = new OrgUnit("HOTech", "Head Office Technology", 
                 OrgUnitType.Executive, ouBrd);
             var ouItInfra = new OrgUnit("ITInfra", "IT Infrastructure",
@@ -27,6 +31,8 @@ namespace SeedingATree
 
             Assert.AreEqual("Board", ouBrd.ShortName);
             Assert.AreEqual("HOFin", ouHOFin.ShortName);
+            Assert.AreEqual("FinContr", ouFinContr.ShortName);
+            Assert.AreEqual("FinStrat", ouFinStrat.ShortName);
             Assert.AreEqual("HOTech", ouHOTech.ShortName);
             Assert.AreEqual("ITInfra", ouItInfra.ShortName);
             Assert.AreEqual("SWDevSvc", ouSds.ShortName);
@@ -35,6 +41,8 @@ namespace SeedingATree
 
             Assert.IsNull(ouBrd.Parent);
             Assert.AreSame(ouBrd, ouHOFin.Parent);
+            Assert.AreSame(ouHOFin, ouFinContr.Parent);
+            Assert.AreSame(ouHOFin, ouFinStrat.Parent);
             Assert.AreSame(ouBrd, ouHOTech.Parent);
             Assert.AreSame(ouHOTech, ouItInfra.Parent);
             Assert.AreSame(ouHOTech, ouSds.Parent);
@@ -50,6 +58,10 @@ namespace SeedingATree
             var ouBrd = an.OrgUnit("Board").Build();
             var ouHOFin = an.OrgUnit("HOFin")
                 .AsChildOf(ouBrd).Build();
+            var ouFinContr = an.OrgUnit("FinContr")
+                .AsChildOf(ouHOFin).Build();
+            var ouFinStrat = an.OrgUnit("FinStrat")
+                .AsChildOf(ouHOFin).Build();
             var ouHOTech = an.OrgUnit("HOTech")
                 .AsChildOf(ouBrd).Build();
             var ouItInfra = an.OrgUnit("ITInfra")
@@ -63,6 +75,8 @@ namespace SeedingATree
 
             Assert.AreEqual("Board", ouBrd.ShortName);
             Assert.AreEqual("HOFin", ouHOFin.ShortName);
+            Assert.AreEqual("FinContr", ouFinContr.ShortName);
+            Assert.AreEqual("FinStrat", ouFinStrat.ShortName);
             Assert.AreEqual("HOTech", ouHOTech.ShortName);
             Assert.AreEqual("ITInfra", ouItInfra.ShortName);
             Assert.AreEqual("SWDevSvc", ouSds.ShortName);
@@ -71,6 +85,8 @@ namespace SeedingATree
 
             Assert.IsNull(ouBrd.Parent);
             Assert.AreSame(ouBrd, ouHOFin.Parent);
+            Assert.AreSame(ouHOFin, ouFinContr.Parent);
+            Assert.AreSame(ouHOFin, ouFinStrat.Parent);
             Assert.AreSame(ouBrd, ouHOTech.Parent);
             Assert.AreSame(ouHOTech, ouItInfra.Parent);
             Assert.AreSame(ouHOTech, ouSds.Parent);
@@ -84,7 +100,9 @@ namespace SeedingATree
             var an = new OrgStructBuilder();
 
             var oestruct = an.OrgStruct("Board",
-                brd => brd.HasChild("HOFin"),
+                brd => brd.HasChild("HOFin",
+                    fin => fin.HasChild("FinContr"),
+                    fin => fin.HasChild("FinStrat")),
                 brd => brd.HasChild("HOTech",
                     tech => tech.HasChild("ITInfra"),
                     tech => tech.HasChild("SWDevSvc",
@@ -93,6 +111,8 @@ namespace SeedingATree
 
             var ouBrd = oestruct["Board"];
             var ouHOFin = oestruct["HOFin"];
+            var ouFinContr = oestruct["FinContr"];
+            var ouFinStrat = oestruct["FinStrat"];
             var ouHOTech = oestruct["HOTech"];
             var ouItInfra = oestruct["ITInfra"];
             var ouSds = oestruct["SWDevSvc"];
@@ -101,6 +121,8 @@ namespace SeedingATree
 
             Assert.AreEqual("Board", ouBrd.ShortName);
             Assert.AreEqual("HOFin", ouHOFin.ShortName);
+            Assert.AreEqual("FinContr", ouFinContr.ShortName);
+            Assert.AreEqual("FinStrat", ouFinStrat.ShortName);
             Assert.AreEqual("HOTech", ouHOTech.ShortName);
             Assert.AreEqual("ITInfra", ouItInfra.ShortName);
             Assert.AreEqual("SWDevSvc", ouSds.ShortName);
@@ -109,6 +131,8 @@ namespace SeedingATree
 
             Assert.IsNull(ouBrd.Parent);
             Assert.AreSame(ouBrd, ouHOFin.Parent);
+            Assert.AreSame(ouHOFin, ouFinContr.Parent);
+            Assert.AreSame(ouHOFin, ouFinStrat.Parent);
             Assert.AreSame(ouBrd, ouHOTech.Parent);
             Assert.AreSame(ouHOTech, ouItInfra.Parent);
             Assert.AreSame(ouHOTech, ouSds.Parent);

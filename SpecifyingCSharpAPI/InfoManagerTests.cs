@@ -15,7 +15,9 @@ namespace SpecifyingCSharpAPI
             var an = new OrgStructBuilder();
             _context = Facade.CreateOrgContext(
                 an.OrgStruct("Board",
-                    brd => brd.HasChild("HOFin"),
+                    brd => brd.HasChild("HOFin",
+                        fin => fin.HasChild("FinContr"),
+                        fin => fin.HasChild("FinStrat")),
                     brd => brd.HasChild("HOTech",
                         tech => tech.HasChild("ITInfra"),
                         tech => tech.HasChild("SWDevSvc",

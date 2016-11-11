@@ -87,6 +87,12 @@ this.ScenarioSetup(scenarioInfo);
                         "HOFin",
                         "Board"});
             table1.AddRow(new string[] {
+                        "FinContr",
+                        "HOFin"});
+            table1.AddRow(new string[] {
+                        "FinStrat",
+                        "HOFin"});
+            table1.AddRow(new string[] {
                         "HOTech",
                         "Board"});
             table1.AddRow(new string[] {
@@ -103,9 +109,9 @@ this.ScenarioSetup(scenarioInfo);
                         "SWDevSvc"});
 #line 4
  testRunner.Given("I have the following org units", ((string)(null)), table1, "Given ");
-#line 14
+#line 16
  testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 17
+#line 19
  testRunner.Then("I get the correct org units.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -117,7 +123,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SeedAnOrgTreeUsingATableWithARowForEachOrgUnitAndColumnSkipping()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a table with a row for each org unit and column skipping", ((string[])(null)));
-#line 20
+#line 22
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -134,6 +140,16 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "HOFin",
                         "",
+                        ""});
+            table2.AddRow(new string[] {
+                        "",
+                        "",
+                        "FinContr",
+                        ""});
+            table2.AddRow(new string[] {
+                        "",
+                        "",
+                        "FinStrat",
                         ""});
             table2.AddRow(new string[] {
                         "",
@@ -160,11 +176,11 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "SWEng"});
-#line 21
+#line 23
  testRunner.Given("I have the following levelled org structure", ((string)(null)), table2, "Given ");
-#line 31
+#line 35
  testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 34
+#line 38
  testRunner.Then("I get the correct org units.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -176,7 +192,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SeedAnOrgTreeUsingATableWithARowForEachOrgUnitAndIndentation()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a table with a row for each org unit and indentation", ((string[])(null)));
-#line 37
+#line 41
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -185,6 +201,10 @@ this.ScenarioSetup(scenarioInfo);
                         "Board"});
             table3.AddRow(new string[] {
                         ". HOFin"});
+            table3.AddRow(new string[] {
+                        ". . FinContr"});
+            table3.AddRow(new string[] {
+                        ". . FinStrat"});
             table3.AddRow(new string[] {
                         ". HOTech"});
             table3.AddRow(new string[] {
@@ -195,11 +215,11 @@ this.ScenarioSetup(scenarioInfo);
                         ". . . SWPmo"});
             table3.AddRow(new string[] {
                         ". . . SWEng"});
-#line 38
+#line 42
  testRunner.Given("I have the following intended org structure", ((string)(null)), table3, "Given ");
-#line 48
+#line 54
  testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 51
+#line 57
  testRunner.Then("I get the correct org units.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -213,15 +233,15 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a multiline text with a row for each org unit and indentat" +
                     "ion with dots", ((string[])(null)));
-#line 54
+#line 60
 this.ScenarioSetup(scenarioInfo);
 #line hidden
-#line 55
- testRunner.Given("I have the following intended org structure as text", "Board       \r\n. HOFin     \r\n. HOTech    \r\n. . ITInfra \r\n. . SWDevSvc\r\n. . . SWPmo" +
-                    " \r\n. . . SWEng ", ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 66
+#line 61
+ testRunner.Given("I have the following intended org structure as text", "Board       \r\n. HOFin     \r\n. . FinContr\r\n. . FinStrat\r\n. HOTech    \r\n. . ITInfra" +
+                    " \r\n. . SWDevSvc\r\n. . . SWPmo \r\n. . . SWEng ", ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 74
  testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 69
+#line 77
  testRunner.Then("I get the correct org units.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -235,15 +255,15 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a multiline text with a row for each org unit and indentat" +
                     "ion", ((string[])(null)));
-#line 72
+#line 80
 this.ScenarioSetup(scenarioInfo);
 #line hidden
-#line 73
- testRunner.Given("I have the following intended org structure as text", "Board       \r\n  HOFin     \r\n  HOTech    \r\n    ITInfra \r\n    SWDevSvc\r\n      SWPmo" +
-                    " \r\n      SWEng ", ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 84
+#line 81
+ testRunner.Given("I have the following intended org structure as text", "Board       \r\n  HOFin     \r\n    FinContr\r\n    FinStrat\r\n  HOTech    \r\n    ITInfra" +
+                    " \r\n    SWDevSvc\r\n      SWPmo \r\n      SWEng ", ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 94
  testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 87
+#line 97
  testRunner.Then("I get the correct org units.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -257,15 +277,15 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Seed an org tree using a multiline text with a row for each org unit and indentat" +
                     "ion with arrows", ((string[])(null)));
-#line 90
+#line 100
 this.ScenarioSetup(scenarioInfo);
 #line hidden
-#line 91
- testRunner.Given("I have the following intended org structure as text indenting by \'-> \'", "Board       \r\n-> HOFin     \r\n-> HOTech    \r\n   -> ITInfra \r\n   -> SWDevSvc\r\n     " +
-                    " -> SWPmo \r\n      -> SWEng ", ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 102
+#line 101
+ testRunner.Given("I have the following intended org structure as text indenting by \'-> \'", "Board       \r\n-> HOFin     \r\n   -> FinContr\r\n   -> FinStrat\r\n-> HOTech    \r\n   ->" +
+                    " ITInfra \r\n   -> SWDevSvc\r\n      -> SWPmo \r\n      -> SWEng ", ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 114
  testRunner.When("I execute the specs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 105
+#line 117
  testRunner.Then("I get the correct org units.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

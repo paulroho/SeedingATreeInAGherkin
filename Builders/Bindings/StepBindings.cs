@@ -132,30 +132,36 @@ namespace SeedingATree.Bindings
         [Then(@"I get the correct org units\.")]
         public void ThenIGetTheCorrectOrgUnits()
         {
-            var orgUnits = _context.OrgStruct;
-            var orgBrd = orgUnits["Board"];
-            var orgHOFin = orgUnits["HOFin"];
-            var orgHOTech = orgUnits["HOTech"];
-            var orgItInfra = orgUnits["ITInfra"];
-            var orgSds = orgUnits["SWDevSvc"];
-            var orgSwPmo = orgUnits["SWPmo"];
-            var orgSwEng = orgUnits["SWEng"];
+            var ouUnits = _context.OrgStruct;
+            var ouBrd = ouUnits["Board"];
+            var ouHOFin = ouUnits["HOFin"];
+            var ouFinContr = ouUnits["FinContr"];
+            var ouFinStrat = ouUnits["FinStrat"];
+            var ouHOTech = ouUnits["HOTech"];
+            var ouItInfra = ouUnits["ITInfra"];
+            var ouSds = ouUnits["SWDevSvc"];
+            var ouSwPmo = ouUnits["SWPmo"];
+            var ouSwEng = ouUnits["SWEng"];
 
-            Assert.AreEqual("Board", orgBrd.ShortName);
-            Assert.AreEqual("HOFin", orgHOFin.ShortName);
-            Assert.AreEqual("HOTech", orgHOTech.ShortName);
-            Assert.AreEqual("ITInfra", orgItInfra.ShortName);
-            Assert.AreEqual("SWDevSvc", orgSds.ShortName);
-            Assert.AreEqual("SWPmo", orgSwPmo.ShortName);
-            Assert.AreEqual("SWEng", orgSwEng.ShortName);
+            Assert.AreEqual("Board", ouBrd.ShortName);
+            Assert.AreEqual("HOFin", ouHOFin.ShortName);
+            Assert.AreEqual("FinContr", ouFinContr.ShortName);
+            Assert.AreEqual("FinStrat", ouFinStrat.ShortName);
+            Assert.AreEqual("HOTech", ouHOTech.ShortName);
+            Assert.AreEqual("ITInfra", ouItInfra.ShortName);
+            Assert.AreEqual("SWDevSvc", ouSds.ShortName);
+            Assert.AreEqual("SWPmo", ouSwPmo.ShortName);
+            Assert.AreEqual("SWEng", ouSwEng.ShortName);
 
-            Assert.IsNull(orgBrd.Parent);
-            Assert.AreSame(orgBrd, orgHOFin.Parent);
-            Assert.AreSame(orgBrd, orgHOTech.Parent);
-            Assert.AreSame(orgHOTech, orgItInfra.Parent);
-            Assert.AreSame(orgHOTech, orgSds.Parent);
-            Assert.AreSame(orgSds, orgSwPmo.Parent);
-            Assert.AreSame(orgSds, orgSwEng.Parent);
+            Assert.IsNull(ouBrd.Parent);
+            Assert.AreSame(ouBrd, ouHOFin.Parent);
+            Assert.AreSame(ouHOFin, ouFinContr.Parent);
+            Assert.AreSame(ouHOFin, ouFinStrat.Parent);
+            Assert.AreSame(ouBrd, ouHOTech.Parent);
+            Assert.AreSame(ouHOTech, ouItInfra.Parent);
+            Assert.AreSame(ouHOTech, ouSds.Parent);
+            Assert.AreSame(ouSds, ouSwPmo.Parent);
+            Assert.AreSame(ouSds, ouSwEng.Parent);
         }
     }
 

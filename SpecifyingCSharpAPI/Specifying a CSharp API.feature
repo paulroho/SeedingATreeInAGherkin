@@ -5,6 +5,8 @@ Background:
 		"""
 		Board       
 		-> HOFin     
+			-> FinContr
+			-> FinStrat
 		-> HOTech    
 		   -> ITInfra 
 		   -> SWDevSvc
