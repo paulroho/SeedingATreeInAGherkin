@@ -54,11 +54,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Permission Chain Scenarios.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Permission Chain Scenarios.feature</DependentUpon>
+    </Compile>
+    <Compile Include="PermissionChainBindings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Permission Chain Scenarios.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Permission Chain Scenarios.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
