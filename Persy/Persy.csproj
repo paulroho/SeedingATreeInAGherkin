@@ -54,6 +54,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MetaTest.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MetaTest.feature</DependentUpon>
+    </Compile>
+    <Compile Include="MetaTestBindings.cs" />
     <Compile Include="Permission Chain Scenarios.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,6 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="MetaTest.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MetaTest.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Permission Chain Scenarios.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
