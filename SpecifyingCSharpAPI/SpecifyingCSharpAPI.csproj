@@ -71,18 +71,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Builders\SeedingATree.csproj">
-      <Project>{F0CE861C-8D4A-4159-9E31-0A19D0EAFD00}</Project>
-      <Name>SeedingATree</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Specifying a CSharp API.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Specifying a CSharp API.feature.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SeedingATree\SeedingATree.csproj">
+      <Project>{f0ce861c-8d4a-4159-9e31-0a19d0eafd00}</Project>
+      <Name>SeedingATree</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
